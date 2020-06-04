@@ -1,5 +1,5 @@
 const Config = {
-    mapSize:9,
+    mapSize:10,
     startStrength:10,
     startHealth: 100,
     swordDamage:20,

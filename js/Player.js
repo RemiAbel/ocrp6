@@ -14,13 +14,28 @@ class Player {
         let playerOk = false;
 
         while (!playerOk) {
-            let random = Utils.randomSquare(this.mapSize);
+            
+            if (this.style == "player1") {
 
-            if (!random.hasClass("weapon") && !random.hasClass("wall") && !random.hasClass("wallplayer")) {
-                random.addClass("player");
-                random.addClass(this.style);
-                playerOk = true;
+                let random = Utils.randomSquare(Math.floor(this.mapSize/3));
+
+                if (!random.hasClass("weapon") && !random.hasClass("wall") && !random.hasClass("player")) {
+                    random.addClass("player");
+                    random.addClass(this.style);
+                    playerOk = true;
+                }
+
+            } else {
+
+                let random = Utils.randomSquare(Math.floor(this.mapSize), Math.floor(this.mapSize*2/3));
+
+                if (!random.hasClass("weapon") && !random.hasClass("wall") && !random.hasClass("player")) {
+                    random.addClass("player");
+                    random.addClass(this.style);
+                    playerOk = true;
+                }
             }
+
         }
     }
 
@@ -58,23 +73,7 @@ class Player {
         let test = $( '.square[x='   +   (Number($("." + this.style).attr("x")))   +   '][y='   +   (Number($("." + this.style).attr("y")))   +   ']');
         test.css("border-color", "green");
         
-        /*
-        for (let i=1; i<4;i++) {
-
-            let moveCase = $( '.square[x='   +   (Number($("." + this.style).attr("x"))+i)   +   '][y='   +   Number($("." + this.style).attr("y"))   +   ']');
-            if (!moveCase.hasClass("wall") ) {
-                moveCase.css("border-color", "white");
-            } else { break; }
-        }
-
-        for (let j=-1; j>-4; j--) {
-            let moveCase = $( '.square[x='   +   Number($("." + this.style).attr("x"))   +   '][y='   +   (Number($("." + this.style).attr("y"))+j)   +   ']');
-            if (!moveCase.hasClass("wall") ) {
-                moveCase.css("border-color", "white");
-            } else { break; }
-        }
-        */
-
+        
         this.showDirection(1, 4, 1, true);
         this.showDirection(-1, -4, -1, true);
         this.showDirection(1, 4, 1, false);
