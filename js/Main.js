@@ -28,3 +28,5 @@ class Main {
 }
 
 let main = new Main();
+
+main.player1.showMove();
