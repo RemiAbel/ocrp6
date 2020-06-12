@@ -1,15 +1,20 @@
-body {
-    position: relative;
+
+
+.container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.stat {
+    width: 20%;
+    height: 20%;
+    background-color: pink;
 
 }
 
 
-#map {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, 0%);    
-}
+
 
 .row {
     display: flex;

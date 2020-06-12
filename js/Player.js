@@ -86,7 +86,7 @@ class Player {
             $(".square").removeClass("moveCase");
             
         });
-        //$(".square").removeClass("moveCase");
+        
     }
 
 
