@@ -29,6 +29,7 @@ class Main {
 
     player1Turn() {
         this.player1.showMove()
+        this.player1.move();
 
     }
 
@@ -36,18 +37,5 @@ class Main {
 }
 
 let main = new Main();
-
-//main.player1.showMove();
-
-$(".moveCase").click(function() {
-    
-
-    $(".player1").removeClass("player player1");
-
-    $(this).addClass("player player1");
-
-    $(".square").removeClass("moveCase");
-    
-});
 
 

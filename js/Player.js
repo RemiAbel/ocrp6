@@ -76,7 +76,16 @@ class Player {
     }
 
     move() {
+        $(".moveCase").on("click",(e) => {
+    
+
+            $("." + this.style ).removeClass("player " + this.style);
         
+            $(e.target).addClass("player " + this.style);
+        
+            $(".square").removeClass("moveCase");
+            
+        });
         //$(".square").removeClass("moveCase");
     }
 
