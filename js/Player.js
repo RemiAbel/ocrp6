@@ -1,13 +1,14 @@
 // class joueurs
 
 class Player {
-    constructor(name,mapSize=8, style, health = 100, attackPower = 10) {
+    constructor(name,mapSize=8, style, health = 100, attackPower = 20) {
         this.name = name;
         this.health = health;
         this.attackPower = attackPower;
         this.mapSize = mapSize;
         this.style = style;
         this.creatPlayer(name);
+        this.getInfo();
     }
 
     creatPlayer () {
@@ -37,6 +38,14 @@ class Player {
             }
 
         }
+    }
+
+    getInfo() {
+        $("#" + this.style + "Name").html("Nom : " + this.name);
+        $("#" + this.style + "HP").html("HP : " + this.health);
+        $("#" + this.style + "Power").html("Puissance : " + this.attackPower);
+
+        
     }
 
 
