@@ -62,3 +62,7 @@ body {
 .player2 {
     border-color: darkblue;
 }
+
+.moveCase {
+    border-color: ivory;
+}

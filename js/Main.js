@@ -3,7 +3,8 @@ class Main {
     constructor() {
         this.loadMap();
         this.loadWeapon();
-        this.loadPlayer();    
+        this.loadPlayer();
+        this.player1Turn();    
     }
 
     loadMap() {
@@ -25,8 +26,28 @@ class Main {
         this.player2 = new Player("Sakura",Config.mapSize,"player2");
 
     }
+
+    player1Turn() {
+        this.player1.showMove()
+
+    }
+
+
 }
 
 let main = new Main();
 
-main.player1.showMove();
+//main.player1.showMove();
+
+$(".moveCase").click(function() {
+    
+
+    $(".player1").removeClass("player player1");
+
+    $(this).addClass("player player1");
+
+    $(".square").removeClass("moveCase");
+    
+});
+
+

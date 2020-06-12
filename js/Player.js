@@ -59,7 +59,7 @@ class Player {
 
                 let moveCase = $( '.square[x='   +   (Number($("." + this.style).attr("x"))+(i*dirX))   +   '][y='   +   (Number($("." + this.style).attr("y"))+(i*dirY))   +   ']');
                 if (!moveCase.hasClass("wall") ) {
-                    moveCase.css("border-color", "white");
+                    moveCase.addClass("moveCase");
                 } else { break; }
             
         }
@@ -73,6 +73,11 @@ class Player {
         this.showDirection(1, 4, 1, false);
         this.showDirection(-1, -4, -1, false);
 
+    }
+
+    move() {
+        
+        //$(".square").removeClass("moveCase");
     }
 
 
