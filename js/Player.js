@@ -49,30 +49,24 @@ class Player {
     }
 
     showDirection(start, end,increment, directionX) {
+
+        const dirX = directionX ? 1 : 0;
+        const dirY = directionX ? 0 : 1;
+
+        
         for (let i=start; Math.abs(i)< Math.abs(end);i=i+increment) {
             
-            if (directionX){
-                let moveCase = $( '.square[x='   +   (Number($("." + this.style).attr("x"))+i)   +   '][y='   +   Number($("." + this.style).attr("y"))   +   ']');
-                if (!moveCase.hasClass("wall") ) {
-                    moveCase.css("border-color", "white");
-                } else { break; }
-    
-            } else {
-                let moveCase = $( '.square[x='   +   Number($("." + this.style).attr("x"))   +   '][y='   +   (Number($("." + this.style).attr("y"))+i)   +   ']');
-                if (!moveCase.hasClass("wall") ) {
-                    moveCase.css("border-color", "white");
-                } else { break; }
 
-            }
+                let moveCase = $( '.square[x='   +   (Number($("." + this.style).attr("x"))+(i*dirX))   +   '][y='   +   (Number($("." + this.style).attr("y"))+(i*dirY))   +   ']');
+                if (!moveCase.hasClass("wall") ) {
+                    moveCase.css("border-color", "white");
+                } else { break; }
+            
         }
 
     }
 
-    showMove() {
-
-        let test = $( '.square[x='   +   (Number($("." + this.style).attr("x")))   +   '][y='   +   (Number($("." + this.style).attr("y")))   +   ']');
-        test.css("border-color", "green");
-        
+    showMove() {        
         
         this.showDirection(1, 4, 1, true);
         this.showDirection(-1, -4, -1, true);
