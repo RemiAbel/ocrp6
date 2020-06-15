@@ -4,7 +4,7 @@ class Main {
         this.loadMap();
         this.loadWeapon();
         this.loadPlayer();
-        this.player1Turn();    
+        this.playerTurn();    
     }
 
     loadMap() {
@@ -27,11 +27,15 @@ class Main {
 
     }
 
-    player1Turn() {
-        this.player1.showMove()
+    playerTurn() {
+        this.player1.showMove();
         this.player1.move();
+        
+
 
     }
+
+
 
 
 }

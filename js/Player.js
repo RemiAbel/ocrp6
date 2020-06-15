@@ -84,15 +84,121 @@ class Player {
 
     }
 
-    move() {
-        $(".moveCase").on("click",(e) => {
     
+
+    move() {
+        $(".moveCase").on("click",(e) => {  
+            
+            let square = $(e.target);
+
+            const switchWeapon = (weapon, damage) => {
+
+                if (square.hasClass(weapon)) {
+
+                    switch (this.attackPower) {
+
+                        case Config.swordDamage :
+                            square.removeClass(weapon).addClass("sword");
+                            this.attackPower = damage;
+                            this.getInfo();
+                            break;
+                        
+                        case Config.axDamage :
+                            square.removeClass(weapon).addClass("ax");
+                            this.attackPower = damage;
+                            this.getInfo();
+                            break;
+
+                        case Config.saberDamage :
+                            square.removeClass(weapon).addClass("saber");
+                            this.attackPower = damage;
+                            this.getInfo();
+                            break;
+                        
+                        case Config.daggerDamage :
+                            square.removeClass(weapon).addClass("dagger");
+                            this.attackPower = damage;
+                            this.getInfo();
+                            break;
+                        
+                        case Config.axDamage :
+                            square.removeClass(weapon).addClass("ax");
+                            this.attackPower = Config.daggerDamage;
+                            this.getInfo();
+                            break;
+
+                    }
+
+
+                }
+                
+
+            }
+            
+
+            if (square.hasClass("weapon")){
+
+                switchWeapon("dagger", Config.daggerDamage);
+
+                switchWeapon("sword", Config.swordDamage);
+
+                switchWeapon("ax", Config.axDamage);
+
+                switchWeapon("saber", Config.saberDamage);
+
+                switchWeapon("club", Config.clubDamage);
+
+
+                /*
+
+                if (square.hasClass("dagger")) {
+
+                    switch (this.attackPower) {
+
+                        case Config.swordDamage :
+                            square.removeClass("dagger").addClass("sword");
+                            this.attackPower = Config.daggerDamage;
+                            this.getInfo();
+                            break;
+                        
+                        case Config.axDamage :
+                            square.removeClass("dagger").addClass("ax");
+                            this.attackPower = Config.daggerDamage;
+                            this.getInfo();
+                            break;
+
+                        case Config.saberDamage :
+                            square.removeClass("dagger").addClass("saber");
+                            this.attackPower = Config.daggerDamage;
+                            this.getInfo();
+                            break;
+                        
+                        case Config.daggerDamage :
+                            square.removeClass("dagger").addClass("dagger");
+                            this.attackPower = Config.daggerDamage;
+                            this.getInfo();
+                            break;
+                        
+                        case Config.axDamage :
+                            square.removeClass("dagger").addClass("ax");
+                            this.attackPower = Config.daggerDamage;
+                            this.getInfo();
+                            break;
+
+                    }
+
+                }
+                */
+
+            }
 
             $("." + this.style ).removeClass("player " + this.style);
         
             $(e.target).addClass("player " + this.style);
         
             $(".square").removeClass("moveCase");
+
+            
             
         });
         
