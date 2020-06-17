@@ -6,7 +6,7 @@ class Map {
         this.map = $("#map");
         this.mapSize = mapSize;
         this.creatMap(mapSize);
-        this.wallNumber = Math.floor(this.mapSize * 1.5 );
+        this.wallNumber = Math.floor(this.mapSize * 1.2 );
         this.creatWall();
     }
 

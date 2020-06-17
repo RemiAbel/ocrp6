@@ -1,12 +1,13 @@
 // class joueurs
 
 class Player {
-    constructor(name,mapSize=8, style, health = 100, attackPower = 20) {
+    constructor(name, weapon, mapSize=8, style, health = 100, attackPower = 20) {
         this.name = name;
         this.health = health;
         this.attackPower = attackPower;
         this.mapSize = mapSize;
         this.style = style;
+        this.weapon = weapon;
         this.creatPlayer(name);
         this.getInfo();
     }
@@ -36,18 +37,14 @@ class Player {
                     playerOk = true;
                 }
             }
-
         }
     }
 
     getInfo() {
-        $("#" + this.style + "Name").html("Nom : " + this.name);
+        $("#" + this.style + "Name").html(this.name);
         $("#" + this.style + "HP").html("HP : " + this.health);
-        $("#" + this.style + "Power").html("Puissance : " + this.attackPower);
-
-        
+        $("#" + this.style + "Power").html("Puissance : " + this.attackPower);        
     }
-
 
     playerPositionX() {
         return $("." + this.style).attr("x");        
@@ -57,20 +54,18 @@ class Player {
         return $("." + this.style).attr("y");        
     }
 
+    // ajoute la class moveCase au 3 prochaines cases des directions x+, x-, y+, y-.
     showDirection(start, end,increment, directionX) {
 
         const dirX = directionX ? 1 : 0;
         const dirY = directionX ? 0 : 1;
-
         
-        for (let i=start; Math.abs(i)< Math.abs(end);i=i+increment) {
-            
+        for (let i=start; Math.abs(i)< Math.abs(end);i=i+increment) {            
 
                 let moveCase = $( '.square[x='   +   (Number($("." + this.style).attr("x"))+(i*dirX))   +   '][y='   +   (Number($("." + this.style).attr("y"))+(i*dirY))   +   ']');
                 if (!moveCase.hasClass("wall") ) {
                     moveCase.addClass("moveCase");
-                } else { break; }
-            
+                } else { break; }            
         }
 
     }
@@ -85,126 +80,66 @@ class Player {
     }
 
     
-
+    // déplace le joueur quand il clic sur une case en surbrillance
     move() {
-        $(".moveCase").on("click",(e) => {  
-            
-            let square = $(e.target);
+        
+        $(".moveCase").on("click",(e) => {            
 
-            const switchWeapon = (weapon, damage) => {
+            let positionX = $(e.target).attr("x");
+            let positionY = $(e.target).attr("y");
 
-                if (square.hasClass(weapon)) {
+            let playerPositionX = $("." + this.style).attr("x");
+            let playerPositionY = $("." + this.style).attr("y");
 
-                    switch (this.attackPower) {
+            // echange l'arme sur le plateau de jeu avec celle tenue par le joueur et modifie this.attackPower.           
+            const switchWeapons = (square) => {
 
-                        case Config.swordDamage :
-                            square.removeClass(weapon).addClass("sword");
-                            this.attackPower = damage;
-                            this.getInfo();
-                            break;
-                        
-                        case Config.axDamage :
-                            square.removeClass(weapon).addClass("ax");
-                            this.attackPower = damage;
-                            this.getInfo();
-                            break;
+                if (square.hasClass("weapon")){                    
 
-                        case Config.saberDamage :
-                            square.removeClass(weapon).addClass("saber");
-                            this.attackPower = damage;
-                            this.getInfo();
-                            break;
-                        
-                        case Config.daggerDamage :
-                            square.removeClass(weapon).addClass("dagger");
-                            this.attackPower = damage;
-                            this.getInfo();
-                            break;
-                        
-                        case Config.axDamage :
-                            square.removeClass(weapon).addClass("ax");
-                            this.attackPower = Config.daggerDamage;
-                            this.getInfo();
-                            break;
+                    square.addClass(this.weapon.weaponType);
 
-                    }
+                    this.weapon = main.weapons[square.attr("weapon")];
 
+                    this.attackPower = main.weapons[square.attr("weapon")].damage;
 
+                    square.removeClass(main.weapons[square.attr("weapon")].weaponType);
+                    
+                    this.getInfo();    
                 }
-                
+            }            
 
-            }
-            
+            if ((positionX-playerPositionX) !== 0 ) {
 
-            if (square.hasClass("weapon")){
+                let end = positionX-playerPositionX;
+                let increment = Math.sign(end);
 
-                switchWeapon("dagger", Config.daggerDamage);
+                for (let i=0; Math.abs(i) <= Math.abs(end); i=i+increment ) {
 
-                switchWeapon("sword", Config.swordDamage);
-
-                switchWeapon("ax", Config.axDamage);
-
-                switchWeapon("saber", Config.saberDamage);
-
-                switchWeapon("club", Config.clubDamage);
-
-
-                /*
-
-                if (square.hasClass("dagger")) {
-
-                    switch (this.attackPower) {
-
-                        case Config.swordDamage :
-                            square.removeClass("dagger").addClass("sword");
-                            this.attackPower = Config.daggerDamage;
-                            this.getInfo();
-                            break;
-                        
-                        case Config.axDamage :
-                            square.removeClass("dagger").addClass("ax");
-                            this.attackPower = Config.daggerDamage;
-                            this.getInfo();
-                            break;
-
-                        case Config.saberDamage :
-                            square.removeClass("dagger").addClass("saber");
-                            this.attackPower = Config.daggerDamage;
-                            this.getInfo();
-                            break;
-                        
-                        case Config.daggerDamage :
-                            square.removeClass("dagger").addClass("dagger");
-                            this.attackPower = Config.daggerDamage;
-                            this.getInfo();
-                            break;
-                        
-                        case Config.axDamage :
-                            square.removeClass("dagger").addClass("ax");
-                            this.attackPower = Config.daggerDamage;
-                            this.getInfo();
-                            break;
-
-                    }
-
+                    let movePlayer = $( '.square[x='   +   (Number($("." + this.style).attr("x"))+i)   +   '][y='   +   $("." + this.style).attr("y")   +   ']');
+                    
+                    switchWeapons(movePlayer);
                 }
-                */
 
-            }
+            } else if ((positionY-playerPositionY) !== 0 ) {
+
+                let end = positionY-playerPositionY;
+                let increment = Math.sign(end);
+
+                for (let i=0; Math.abs(i) <= Math.abs(end); i=i+increment ) {
+
+                    let movePlayer = $( '.square[x='   +   $("." + this.style).attr("x")   +   '][y='   +   (Number($("." + this.style).attr("y"))+i)   +   ']');
+                    
+                    switchWeapons(movePlayer);
+                }
+            }            
 
             $("." + this.style ).removeClass("player " + this.style);
         
             $(e.target).addClass("player " + this.style);
+
+            $(".moveCase").off("click");
         
-            $(".square").removeClass("moveCase");
-
-            
-            
-        });
-        
-    }
-
-
- 
-    
+            $(".square").removeClass("moveCase");            
+        });        
+    }    
 }

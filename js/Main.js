@@ -14,16 +14,27 @@ class Main {
     }
 
     loadWeapon() {
-        this.club = new Weapon("club", Config.mapSize,Config.katanaDamage,);
+        this.club = new Weapon("club", Config.mapSize,Config.clubDamage,);
         this.dagger = new Weapon("dagger", Config.mapSize,Config.daggerDamage);
         this.ax = new Weapon("ax", Config.mapSize,Config.axDamage);
         this.saber = new Weapon("saber",Config.mapSize,Config.saberDamage);
+        this.sword = new Weapon("sword",Config.mapSize,Config.swordDamage,false);
+        this.sword2 = new Weapon("sword",Config.mapSize,Config.swordDamage,false);
+        this.weapons = {
+            club : this.club,
+            dagger : this.dagger,
+            ax : this.ax,
+            saber: this.saber,
+            sword1 : this.sword1,
+            sword2 : this.sword,
+        }
+
 
     }
 
     loadPlayer() {
-        this.player1 = new Player("Norbert",Config.mapSize,"player1");
-        this.player2 = new Player("Sakura",Config.mapSize,"player2");
+        this.player1 = new Player("Norbert",this.sword, Config.mapSize,"player1");
+        this.player2 = new Player("Sakura",this.sword2, Config.mapSize,"player2");
 
     }
 
