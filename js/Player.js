@@ -8,7 +8,7 @@ class Player {
         this.mapSize = mapSize;
         this.style = style;
         this.weapon = weapon;
-        this.creatPlayer(name);
+        this.creatPlayer();
         this.getInfo();
     }
 
@@ -43,7 +43,9 @@ class Player {
     getInfo() {
         $("#" + this.style + "Name").html(this.name);
         $("#" + this.style + "HP").html("HP : " + this.health);
-        $("#" + this.style + "Power").html("Puissance : " + this.attackPower);        
+        $("#" + this.style + "Power").html("Puissance : " + this.attackPower);
+        $("#" + this.style + "Weapon").html("Arme : " + this.weapon.weaponType);
+              
     }
 
     playerPositionX() {
@@ -79,34 +81,50 @@ class Player {
 
     }
 
-    
+    switchWeapons(square) {
+
+        if (square.hasClass("weapon")){   
+            
+            console.log(this.weapon);
+            
+            let playerWeapon = this.weapon.weaponType;    
+            
+            //console.log(playerWeapon, main.weapons, square.attr("weapon"));
+
+            this.weapon = main.weapons[square.attr("weapon")];
+
+            console.log(this.weapon);
+
+            this.attackPower = main.weapons[square.attr("weapon")].damage;
+
+            
+
+            square.removeClass(main.weapons[square.attr("weapon")].weaponType);
+
+            square.attr("weapon", playerWeapon );
+            
+            this.getInfo();    
+        }
+    }            
+
     // déplace le joueur quand il clic sur une case en surbrillance
     move() {
-        
-        $(".moveCase").on("click",(e) => {            
+        $(".moveCase").off("click");
+
+        $(".moveCase").on("click",(e) => {   
+            //console.log()         
 
             let positionX = $(e.target).attr("x");
             let positionY = $(e.target).attr("y");
+            console.log(positionX);
+            console.log(positionY);
+
 
             let playerPositionX = $("." + this.style).attr("x");
             let playerPositionY = $("." + this.style).attr("y");
 
             // echange l'arme sur le plateau de jeu avec celle tenue par le joueur et modifie this.attackPower.           
-            const switchWeapons = (square) => {
-
-                if (square.hasClass("weapon")){                    
-
-                    square.addClass(this.weapon.weaponType);
-
-                    this.weapon = main.weapons[square.attr("weapon")];
-
-                    this.attackPower = main.weapons[square.attr("weapon")].damage;
-
-                    square.removeClass(main.weapons[square.attr("weapon")].weaponType);
-                    
-                    this.getInfo();    
-                }
-            }            
+            
 
             if ((positionX-playerPositionX) !== 0 ) {
 
@@ -117,7 +135,7 @@ class Player {
 
                     let movePlayer = $( '.square[x='   +   (Number($("." + this.style).attr("x"))+i)   +   '][y='   +   $("." + this.style).attr("y")   +   ']');
                     
-                    switchWeapons(movePlayer);
+                    this.switchWeapons(movePlayer);
                 }
 
             } else if ((positionY-playerPositionY) !== 0 ) {
@@ -129,7 +147,7 @@ class Player {
 
                     let movePlayer = $( '.square[x='   +   $("." + this.style).attr("x")   +   '][y='   +   (Number($("." + this.style).attr("y"))+i)   +   ']');
                     
-                    switchWeapons(movePlayer);
+                    this.switchWeapons(movePlayer);
                 }
             }            
 
@@ -139,7 +157,15 @@ class Player {
 
             $(".moveCase").off("click");
         
-            $(".square").removeClass("moveCase");            
+            $(".square").removeClass("moveCase"); 
+            
+            main.playerTurn();
         });        
-    }    
+    }
+
+    turn() {
+        console.log(this.weapon);
+        this.showMove();
+        this.move();
+    }
 }

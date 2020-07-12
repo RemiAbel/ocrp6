@@ -1,10 +1,12 @@
 class Main {
 
-    constructor() {
+    constructor(currentPlayer = 1) {
+        this.currentPlayer = currentPlayer;
         this.loadMap();
         this.loadWeapon();
         this.loadPlayer();
-        this.playerTurn();    
+        this.playerTurn();
+           
     }
 
     loadMap() {
@@ -19,14 +21,14 @@ class Main {
         this.ax = new Weapon("ax", Config.mapSize,Config.axDamage);
         this.saber = new Weapon("saber",Config.mapSize,Config.saberDamage);
         this.sword = new Weapon("sword",Config.mapSize,Config.swordDamage,false);
-        this.sword2 = new Weapon("sword",Config.mapSize,Config.swordDamage,false);
+        this.sword1 = new Weapon("sword1",Config.mapSize,Config.swordDamage,false);
         this.weapons = {
             club : this.club,
             dagger : this.dagger,
             ax : this.ax,
             saber: this.saber,
+            sword : this.sword,
             sword1 : this.sword1,
-            sword2 : this.sword,
         }
 
 
@@ -34,14 +36,34 @@ class Main {
 
     loadPlayer() {
         this.player1 = new Player("Norbert",this.sword, Config.mapSize,"player1");
-        this.player2 = new Player("Sakura",this.sword2, Config.mapSize,"player2");
+        this.player2 = new Player("Sakura",this.sword1, Config.mapSize,"player2");
 
     }
 
+    
+
     playerTurn() {
-        this.player1.showMove();
-        this.player1.move();
+
+        console.log(this.currentPlayer);
+
+        //this.player1.showMove();
+        //this.player1.move();
+        if(this.currentPlayer===1) {
+            
+            this.player1.turn();
+            this.currentPlayer = 2;
+            
+            
+
+        } else if (this.currentPlayer===2) {
+            
+            this.player2.turn();
+            this.currentPlayer= 1;
+            
+        }
         
+        
+    
 
 
     }
@@ -52,5 +74,7 @@ class Main {
 }
 
 let main = new Main();
+
+
 
 

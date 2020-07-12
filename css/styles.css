@@ -34,27 +34,31 @@
     border-color: red;
 }
 
-.sword {
+div[weapon = "sword"] {
     background-image: url("../images/sword.png");
 }
 
-.dagger {
+div[weapon = "dagger"] {
     background-image: url("../images/dagger.png");
 }
 
-.saber {
+div[weapon = "saber"] {
     background-image: url("../images/saber.png");
 }
 
-.ax {
+div[weapon = "ax"] {
     background-image: url("../images/ax.png");
 }
 
-.club {
+div[weapon = "club"] {
     background-image: url("../images/club.png");
 }
 
-.player {
+.player[weapon = "sword"] {
+    background-image: url("../images/swordPlayer.png"); 
+}
+
+.player[weapon = "sword1"] {
     background-image: url("../images/swordPlayer.png"); 
 }
 
