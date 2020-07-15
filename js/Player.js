@@ -48,9 +48,7 @@ class Player {
         $("#" + this.style + "Power").html("Puissance : " + this.attackPower);
         let weaponName = this.weapon.weaponType;
 
-        if (weaponName == "sword1") { weaponName = "sword"}
-
-    
+        if (weaponName == "sword1") { weaponName = "sword"}    
         $("#" + this.style + "Weapon").html("Arme : " + weaponName);
               
     }
@@ -72,7 +70,7 @@ class Player {
         for (let i=start; Math.abs(i)< Math.abs(end);i=i+increment) {            
 
                 let moveCase = $( '.square[x='   +   (Number($("." + this.style).attr("x"))+(i*dirX))   +   '][y='   +   (Number($("." + this.style).attr("y"))+(i*dirY))   +   ']');
-                if (!moveCase.hasClass("wall") ) {
+                if ( !moveCase.hasClass("wall") && !moveCase.hasClass("player") ) {
                     moveCase.addClass("moveCase");
                 } else { break; }            
         }
@@ -88,7 +86,7 @@ class Player {
 
     }
 
-    //change l'arme equipé avec l'arme de la case.
+    //fonction de changement de  l'arme equipé avec l'arme de la case.
     switchWeapons(square) {
 
         if (square.hasClass("weapon")){           
@@ -107,23 +105,45 @@ class Player {
         }
     }            
 
+    isPlayerNear(start, end,increment, directionX) {
+
+        const dirX = directionX ? 1 : 0;
+        const dirY = directionX ? 0 : 1;
+        
+        for (let i=start; Math.abs(i)< Math.abs(end);i=i+increment) {            
+
+            let moveCase = $( '.square[x='   +   (Number($("." + this.style).attr("x"))+(i*dirX))   +   '][y='   +   (Number($("." + this.style).attr("y"))+(i*dirY))   +   ']');
+            if ( moveCase.hasClass("player") ) {
+                alert("fight");
+            }             
+        }
+    }
+
+    isPlayerAround() {        
+        
+        this.isPlayerNear(1, 2, 1, true);
+        this.isPlayerNear(-1, -2, -1, true);
+        this.isPlayerNear(1, 2, 1, false);
+        this.isPlayerNear(-1, -2, -1, false);
+
+    }
+
+
     // déplace le joueur quand il clic sur une case en surbrillance
     move() {
         $(".moveCase").off("click");
 
         $(".moveCase").on("click",(e) => {   
                   
-
+            //position de la case cliqué
             let positionX = $(e.target).attr("x");
             let positionY = $(e.target).attr("y");         
 
-
+            //position avant mouvement du joueur
             let playerPositionX = $("." + this.style).attr("x");
             let playerPositionY = $("." + this.style).attr("y");
 
-            // echange l'arme sur le plateau de jeu avec celle tenue par le joueur et modifie this.attackPower.           
-            
-
+            // echange l'arme sur le plateau de jeu avec celle tenue par le joueur et modifie this.attackPower. 
             if ((positionX-playerPositionX) !== 0 ) {
 
                 let end = positionX-playerPositionX;
@@ -171,5 +191,6 @@ class Player {
         console.log(this.weapon);
         this.showMove();
         this.move();
+        this.isPlayerAround();
     }
 }
