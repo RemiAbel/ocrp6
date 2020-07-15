@@ -38,6 +38,10 @@ div[weapon = "sword"] {
     background-image: url("../images/sword.png");
 }
 
+div[weapon = "sword1"] {
+    background-image: url("../images/sword.png");
+}
+
 div[weapon = "dagger"] {
     background-image: url("../images/dagger.png");
 }
@@ -54,12 +58,28 @@ div[weapon = "club"] {
     background-image: url("../images/club.png");
 }
 
-.player[weapon = "sword"] {
+.player[playerWeapon = "sword"] {
     background-image: url("../images/swordPlayer.png"); 
 }
 
-.player[weapon = "sword1"] {
+.player[playerWeapon = "sword1"] {
     background-image: url("../images/swordPlayer.png"); 
+}
+
+.player[playerWeapon = "dagger"] {
+    background-image: url("../images/daggerPlayer.png"); 
+}
+
+.player[playerWeapon = "saber"] {
+    background-image: url("../images/saberPlayer.png"); 
+}
+
+.player[playerWeapon = "ax"] {
+    background-image: url("../images/axPlayer.png"); 
+}
+
+.player[playerWeapon = "club"] {
+    background-image: url("../images/clubPlayer.png"); 
 }
 
 .player1 {

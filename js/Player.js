@@ -24,6 +24,7 @@ class Player {
                 if (!random.hasClass("weapon") && !random.hasClass("wall") && !random.hasClass("player")) {
                     random.addClass("player");
                     random.addClass(this.style);
+                    random.attr("playerWeapon", "sword");
                     playerOk = true;
                 }
 
@@ -34,6 +35,7 @@ class Player {
                 if (!random.hasClass("weapon") && !random.hasClass("wall") && !random.hasClass("player")) {
                     random.addClass("player");
                     random.addClass(this.style);
+                    random.attr("playerWeapon", "sword1");
                     playerOk = true;
                 }
             }
@@ -44,7 +46,12 @@ class Player {
         $("#" + this.style + "Name").html(this.name);
         $("#" + this.style + "HP").html("HP : " + this.health);
         $("#" + this.style + "Power").html("Puissance : " + this.attackPower);
-        $("#" + this.style + "Weapon").html("Arme : " + this.weapon.weaponType);
+        let weaponName = this.weapon.weaponType;
+
+        if (weaponName == "sword1") { weaponName = "sword"}
+
+    
+        $("#" + this.style + "Weapon").html("Arme : " + weaponName);
               
     }
 
@@ -71,7 +78,7 @@ class Player {
         }
 
     }
-
+    // Montre les cases jouables par le joueur.
     showMove() {        
         
         this.showDirection(1, 4, 1, true);
@@ -81,23 +88,16 @@ class Player {
 
     }
 
+    //change l'arme equipé avec l'arme de la case.
     switchWeapons(square) {
 
-        if (square.hasClass("weapon")){   
+        if (square.hasClass("weapon")){           
             
-            console.log(this.weapon);
-            
-            let playerWeapon = this.weapon.weaponType;    
-            
-            //console.log(playerWeapon, main.weapons, square.attr("weapon"));
+            let playerWeapon = this.weapon.weaponType;
 
             this.weapon = main.weapons[square.attr("weapon")];
 
-            console.log(this.weapon);
-
             this.attackPower = main.weapons[square.attr("weapon")].damage;
-
-            
 
             square.removeClass(main.weapons[square.attr("weapon")].weaponType);
 
@@ -112,12 +112,10 @@ class Player {
         $(".moveCase").off("click");
 
         $(".moveCase").on("click",(e) => {   
-            //console.log()         
+                  
 
             let positionX = $(e.target).attr("x");
-            let positionY = $(e.target).attr("y");
-            console.log(positionX);
-            console.log(positionY);
+            let positionY = $(e.target).attr("y");         
 
 
             let playerPositionX = $("." + this.style).attr("x");
@@ -135,7 +133,8 @@ class Player {
 
                     let movePlayer = $( '.square[x='   +   (Number($("." + this.style).attr("x"))+i)   +   '][y='   +   $("." + this.style).attr("y")   +   ']');
                     
-                    this.switchWeapons(movePlayer);
+                    if (i!==0) { this.switchWeapons(movePlayer);}
+                    
                 }
 
             } else if ((positionY-playerPositionY) !== 0 ) {
@@ -147,13 +146,18 @@ class Player {
 
                     let movePlayer = $( '.square[x='   +   $("." + this.style).attr("x")   +   '][y='   +   (Number($("." + this.style).attr("y"))+i)   +   ']');
                     
-                    this.switchWeapons(movePlayer);
+                    if ( i !== 0 ) { this.switchWeapons(movePlayer);}
                 }
             }            
 
             $("." + this.style ).removeClass("player " + this.style);
+
+            $("." + this.style ).removeAttr("playerWeapon");
+            
         
             $(e.target).addClass("player " + this.style);
+
+            $("." + this.style ).attr("playerWeapon", this.weapon.weaponType);
 
             $(".moveCase").off("click");
         
