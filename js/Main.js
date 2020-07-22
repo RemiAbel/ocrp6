@@ -60,16 +60,20 @@ class Main {
             this.player2.turn();
             this.currentPlayer = 1;
             
+        }        
+    }
+/*
+    attack(player, target) {
+        if (target.posture === "attack") {
+
+            target.healh -= this.player.attackPower;
+
+        } else {
+            target.healh -= floor( this.player.attackPower / 2 );
         }
-        
-        
-    
-
-
     }
 
-
-
+*/
 
 }
 

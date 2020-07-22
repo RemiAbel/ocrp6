@@ -1,13 +1,14 @@
 // class joueurs
 
 class Player {
-    constructor(name, weapon, mapSize=8, style, health = 100, attackPower = 20) {
+    constructor(name, weapon, mapSize=8, style, health = 100, attackPower = 20, posture = "attack") {
         this.name = name;
         this.health = health;
         this.attackPower = attackPower;
         this.mapSize = mapSize;
         this.style = style;
         this.weapon = weapon;
+        this.posture = posture;
         this.creatPlayer();
         this.getInfo();
     }
@@ -193,4 +194,21 @@ class Player {
         this.move();
         this.isPlayerAround();
     }
+
+    attack(player) {
+        if (player.posture === "attack") {
+
+            player.health -= this.attackPower;
+
+        } else {
+            player.health -= floor( this.attackPower / 2 );
+        }
+    }
+
+
+  
+
+
+
+
 }
