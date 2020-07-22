@@ -48,17 +48,17 @@ class Main {
 
         //this.player1.showMove();
         //this.player1.move();
-        if(this.currentPlayer===1) {
+        if(this.currentPlayer === 1) {
             
             this.player1.turn();
             this.currentPlayer = 2;
             
             
 
-        } else if (this.currentPlayer===2) {
+        } else if (this.currentPlayer === 2) {
             
             this.player2.turn();
-            this.currentPlayer= 1;
+            this.currentPlayer = 1;
             
         }
         

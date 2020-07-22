@@ -43,13 +43,13 @@ class Player {
     }
 
     getInfo() {
-        $("#" + this.style + "Name").html(this.name);
-        $("#" + this.style + "HP").html("HP : " + this.health);
-        $("#" + this.style + "Power").html("Puissance : " + this.attackPower);
+        $("." + this.style + "Name").html(this.name);
+        $("." + this.style + "HP").html("HP : " + this.health);
+        $("." + this.style + "Power").html("Puissance : " + this.attackPower);
         let weaponName = this.weapon.weaponType;
 
         if (weaponName == "sword1") { weaponName = "sword"}    
-        $("#" + this.style + "Weapon").html("Arme : " + weaponName);
+        $("." + this.style + "Weapon").html("Arme : " + weaponName);
               
     }
 

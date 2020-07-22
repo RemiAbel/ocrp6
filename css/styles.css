@@ -1,4 +1,6 @@
-
+* {
+    font-family: 'Uncial Antiqua', cursive;
+}
 
 .container {
     width: 100%;
@@ -10,6 +12,7 @@
     width: 20%;
     height: 20%;
     background-color: pink;
+
 
 }
 
@@ -92,4 +95,48 @@ div[weapon = "club"] {
 
 .moveCase {
     border-color: ivory;
+}
+
+.hide {
+    display: none;
+
+}
+
+.fightWindow {
+
+    position: absolute;
+    text-align: center;
+    border-style: outset;
+    border-width: 3px;
+    
+    
+    background-color: grey;
+    position: fixed;
+    margin-top: 20vh;
+    display:flex;
+    flex-direction: column;
+    
+
+}
+
+.btnContainer {
+    display: flex;
+    justify-content: center;
+    
+}
+
+button {
+    margin: 10px;
+}
+
+.infoPlayerFight {
+    display: flex;
+}
+
+.statPlayer {
+    padding:10px;
+    margin: 10px;
+    border-style: inset;
+    border-width: 3px;
+    
 }
