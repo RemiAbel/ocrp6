@@ -115,17 +115,21 @@ class Player {
 
             let moveCase = $( '.square[x='   +   (Number($("." + this.style).attr("x"))+(i*dirX))   +   '][y='   +   (Number($("." + this.style).attr("y"))+(i*dirY))   +   ']');
             if ( moveCase.hasClass("player") ) {
-                alert("fight");
+                return true;
             }             
         }
     }
 
     isPlayerAround() {        
-        
-        this.isPlayerNear(1, 2, 1, true);
-        this.isPlayerNear(-1, -2, -1, true);
-        this.isPlayerNear(1, 2, 1, false);
-        this.isPlayerNear(-1, -2, -1, false);
+        let playerAround = [
+            this.isPlayerNear(1, 2, 1, true),
+            this.isPlayerNear(-1, -2, -1, true),
+            this.isPlayerNear(1, 2, 1, false),
+            this.isPlayerNear(-1, -2, -1, false),
+        ]
+
+        return playerAround.includes(true);
+ 
 
     }
 
@@ -187,15 +191,10 @@ class Player {
             main.playerTurn();
         });        
     }
-
-    turn() {
-        console.log(this.weapon);
-        this.showMove();
-        this.move();
-        this.isPlayerAround();
-    }
-
+    
     attack(player) {
+
+        this.posture = "attack";
         if (player.posture === "attack") {
 
             player.health -= this.attackPower;
@@ -203,7 +202,24 @@ class Player {
         } else {
             player.health -= floor( this.attackPower / 2 );
         }
+
+        player.getInfo();
+        main.fightTurn();
     }
+    
+    
+
+
+    turn() {
+
+        this.showMove();
+        this.move();
+                
+        
+    }
+
+
+    
 
 
   

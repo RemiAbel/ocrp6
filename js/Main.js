@@ -40,20 +40,40 @@ class Main {
 
     }
 
+    attackPlayer(player, target) {
+
+        player.posture = "attack";
+        if (target.posture === "attack") {
+
+            target.health -= this.attackPower;
+
+        } else {
+            target.health -= floor( this.attackPower / 2 );
+        }
+
+        target.getInfo();
+        player.getInfo();
+    }
+
     
 
     playerTurn() {
 
         console.log(this.currentPlayer);
 
-        //this.player1.showMove();
-        //this.player1.move();
+       
+        if (this.player1.isPlayerAround()) {
+            console.log(this.player1.isPlayerAround());
+            this.fightTurn();
+            return;
+        }                 
         if(this.currentPlayer === 1) {
-            
+
+                    
             this.player1.turn();
-            this.currentPlayer = 2;
             
-            
+            this.currentPlayer = 2; 
+
 
         } else if (this.currentPlayer === 2) {
             
@@ -61,6 +81,22 @@ class Main {
             this.currentPlayer = 1;
             
         }        
+    }
+
+    fightTurn() {
+        $(".fightWindow").removeClass("hide");
+
+            $(".attackBtn").off("click");
+            
+            $(".attackBtn").on("click",  () => {
+                if (this.currentPlayer === 1) {
+                    this.player1.attack(this.player2);
+                    this.currentPlayer=2;
+                    return;
+                }
+                this.player2.attack(this.player1);
+                this.currentPlayer=1;
+            })
     }
 /*
     attack(player, target) {
@@ -72,8 +108,8 @@ class Main {
             target.healh -= floor( this.player.attackPower / 2 );
         }
     }
-
 */
+
 
 }
 
