@@ -5,7 +5,7 @@ class Main {
         this.loadMap();
         this.loadWeapon();
         this.loadPlayer();
-        this.playerTurn();
+        this.player1.turn();
            
     }
 
@@ -58,45 +58,103 @@ class Main {
     
 
     playerTurn() {
-
         console.log(this.currentPlayer);
 
-       
+        /*      
         if (this.player1.isPlayerAround()) {
-            console.log(this.player1.isPlayerAround());
             this.fightTurn();
             return;
-        }                 
+        } 
+          */            
         if(this.currentPlayer === 1) {
 
-                    
-            this.player1.turn();
             
-            this.currentPlayer = 2; 
 
+            if (this.player1.isPlayerAround()) { return;}  
+            this.currentPlayer = 2;
 
-        } else if (this.currentPlayer === 2) {
-            
             this.player2.turn();
-            this.currentPlayer = 1;
+
+
+        } else  {
+
             
-        }        
+
+            if (this.player1.isPlayerAround()) { return;} 
+            this.currentPlayer = 1;
+
+            this.player1.turn();
+
+                       
+        } 
+        console.log(this.currentPlayer);       
     }
 
-    fightTurn() {
-        $(".fightWindow").removeClass("hide");
 
-            $(".attackBtn").off("click");
+
+    fightTurn() {
+        console.log(this.currentPlayer);
+        $(".fightWindow").removeClass("hide");
+        
+        $(".playerTurnName").html("player"+this.currentPlayer);
+        this.displayPlayerTurn();
+        
+
+        $(".attackBtn").off("click");
+
+        $(".attackBtn").on("click",  () => {
+
+            $("#windowPlayer"+this.currentPlayer).removeClass("shield");
+
+            if (this.currentPlayer === 1) {
+                
+                this.currentPlayer=2;
+
+                this.player1.attack(this.player2);
+                return;
+            }
             
-            $(".attackBtn").on("click",  () => {
-                if (this.currentPlayer === 1) {
-                    this.player1.attack(this.player2);
-                    this.currentPlayer=2;
-                    return;
-                }
-                this.player2.attack(this.player1);
-                this.currentPlayer=1;
-            })
+            this.currentPlayer=1;
+
+            this.player2.attack(this.player1);
+        })
+
+        
+
+        $(".defBtn").off("click");
+        
+        $(".defBtn").on("click",  () => {
+
+            this['player'+this.currentPlayer].posture = "defense";
+            $("#windowPlayer"+this.currentPlayer).addClass("shield");
+
+            if (this.currentPlayer === 1) {
+                this.fightTurn();
+                this.currentPlayer=2;
+                return;
+            }
+            this.fightTurn();
+            this.currentPlayer=1;
+        })
+
+       
+    }
+
+    displayPlayerTurn() {
+        if (this.currentPlayer===1) {
+            $("#windowPlayer1").addClass("currentPlayer");
+            $("#windowPlayer2").removeClass("currentPlayer");
+        }else {
+            $("#windowPlayer2").addClass("currentPlayer");
+            $("#windowPlayer1").removeClass("currentPlayer");
+        }
+
+        
+
+    }
+
+    defense() {
+        this['player'+this.currentPlayer].posture = "defense";
     }
 /*
     attack(player, target) {

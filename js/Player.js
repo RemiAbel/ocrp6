@@ -64,7 +64,7 @@ class Player {
 
     // ajoute la class moveCase au 3 prochaines cases des directions x+, x-, y+, y-.
     showDirection(start, end,increment, directionX) {
-
+        console.log(this.style);
         const dirX = directionX ? 1 : 0;
         const dirY = directionX ? 0 : 1;
         
@@ -136,6 +136,7 @@ class Player {
 
     // déplace le joueur quand il clic sur une case en surbrillance
     move() {
+        
         $(".moveCase").off("click");
 
         $(".moveCase").on("click",(e) => {   
@@ -188,7 +189,14 @@ class Player {
         
             $(".square").removeClass("moveCase"); 
             
+            if (this.isPlayerAround()) {
+                main.fightTurn();
+                return;
+            }
+            
             main.playerTurn();
+            
+            
         });        
     }
     
@@ -200,10 +208,17 @@ class Player {
             player.health -= this.attackPower;
 
         } else {
-            player.health -= floor( this.attackPower / 2 );
+            player.health -= Math.floor( this.attackPower / 2 );
+        }
+        
+        player.getInfo();
+
+        if( player.health <= 0 ) {
+            $(".winMessage").removeClass("hide");
+            return;
         }
 
-        player.getInfo();
+        
         main.fightTurn();
     }
     

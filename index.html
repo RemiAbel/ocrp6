@@ -20,10 +20,10 @@
 
     <div class="fightWindow hide">
 
-      <h2>Player 1 Turn</h2>
+      <h2 class="playerTurnName"></h2>
 
       <div class="infoPlayerFight">
-        <div class="statPlayer">
+        <div class="statPlayer" id="windowPlayer1">
   
           <h2 class="player1Name"></h2>      
           <h3 class="player1HP"></h3>
@@ -32,7 +32,7 @@
   
         </div>
   
-        <div class="statPlayer">
+        <div class="statPlayer" id="windowPlayer2">
   
           <h2 class="player2Name"></h2>
           <h3 class="player2HP"></h3>
@@ -45,7 +45,7 @@
       
       <div class="btnContainer">
         <button class="attackBtn" type="button">Attaquer</button>
-        <button class="DefBtn" type="button">Défendre</button>
+        <button class="defBtn" type="button">Défendre</button>
 
       </div>
       
@@ -73,6 +73,10 @@
 
     </div>
 
+    <div class="winMessage hide">
+      You Win
+    </div>
+
     <div id="map">
 
        
@@ -92,7 +96,6 @@
 
 
     <script src="js/Main.js"></script>
-    <script src="js/Fight.js"></script>
 
 
 
