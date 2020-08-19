@@ -51,6 +51,7 @@ class Player {
 
         if (weaponName == "sword1") { weaponName = "sword"}    
         $("." + this.style + "Weapon").html("Arme : " + weaponName);
+        $("." + this.style + "HealBar").css("width", this.health + "%" );
               
     }
 
@@ -64,7 +65,7 @@ class Player {
 
     // ajoute la class moveCase au 3 prochaines cases des directions x+, x-, y+, y-.
     showDirection(start, end,increment, directionX) {
-        console.log(this.style);
+        
         const dirX = directionX ? 1 : 0;
         const dirY = directionX ? 0 : 1;
         

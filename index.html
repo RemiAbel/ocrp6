@@ -10,15 +10,53 @@
 
   <link rel="stylesheet" href="css/styles.css">
   <link href="https://fonts.googleapis.com/css2?family=Uncial+Antiqua&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
 </head>
 
 <body>
 
+  <header class="pixelFont">
+    <p>Knight Fight</p>
+  </header>
+
   <div class="container">
 
-    <div class="fightWindow hide">
+ 
+
+    <div class="statPlayer statPlayer1 pixelFont">
+
+      <div class="healBarContainer">
+        <div class="player1HealBar"></div>
+      </div>
+      <div class="bigPlayer bigPlayer1"></div>
+      <h2 class="player1Name"></h2>      
+      <h3 class="player1HP"></h3>
+      <h3 class="player1Weapon"></h3>
+      <h3 class="player1Power"></h3>
+
+    </div>
+
+
+
+    <div id="map">
+    </div>
+
+    <div class="statPlayer statPlayer2 pixelFont">
+
+      <div class="healBarContainer">
+        <div class="player2HealBar"></div>
+      </div>
+      <div class="bigPlayer bigPlayer2"></div>
+      <h2 class="player2Name"></h2>
+      <h3 class="player2HP"></h3>
+      <h3 class="player2Weapon"></h3>
+      <h3 class="player2Power"></h3>
+
+    </div>
+
+    <div class="fightWindow hide pixelFont">
 
       <h2 class="playerTurnName"></h2>
 
@@ -52,34 +90,8 @@
 
     </div>
 
-    <div class="stat">
-      <div class="statPlayer">
-
-        <h2 class="player1Name"></h2>      
-        <h3 class="player1HP"></h3>
-        <h3 class="player1Weapon"></h3>
-        <h3 class="player1Power"></h3>
-
-      </div>
-
-      <div class="statPlayer">
-
-        <h2 class="player2Name"></h2>
-        <h3 class="player2HP"></h3>
-        <h3 class="player2Weapon"></h3>
-        <h3 class="player2Power"></h3>
-
-      </div>
-
-    </div>
-
     <div class="winMessage hide">
       You Win
-    </div>
-
-    <div id="map">
-
-       
     </div>
 
 
