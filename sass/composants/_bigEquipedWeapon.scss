@@ -1,0 +1,22 @@
+.player1WeaponWindow {
+    width: 30%;
+    &[weapon *= "sword"] {
+        background-image: url("../images/sword.svg");
+    }
+    &[weapon = "dagger"] {
+        background-image: url("../images/dagger.svg");
+    }
+    &[weapon = "saber"] {
+        background-image: url("../images/saber.svg");
+    }
+    &[weapon = "ax"] {
+        background-image: url("../images/ax.svg");
+    }
+    &[weapon = "club"] {
+        background-image: url("../images/club.svg")
+    }
+}
+
+.player2WeaponWindow {
+    @extend .player1WeaponWindow;
+}

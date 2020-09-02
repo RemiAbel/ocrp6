@@ -57,7 +57,7 @@ body {
     background: rgba(21, 92, 62, 0.5);
 }
 
-.wall {
+.square .wall {
     animation: 1000ms ease-in-out alternate infinite wallAnim;
     
 }
@@ -72,27 +72,27 @@ body {
 }
 
 div[weapon = "sword"] {
-    background-image: url("../images/sword.png"), url("../images/ground.png");
+    background-image: url("../images/sword.svg");
 }
 
 div[weapon = "sword1"] {
-    background-image: url("../images/sword.png"), url("../images/ground.png");
+    background-image: url("../images/sword.svg");
 }
 
 div[weapon = "dagger"] {
-    background-image: url("../images/dagger.png"), url("../images/ground.png");
+    background-image: url("../images/dagger.svg");
 }
 
 div[weapon = "saber"] {
-    background-image: url("../images/saber.png"), url("../images/ground.png");
+    background-image: url("../images/saber.svg");
 }
 
 div[weapon = "ax"] {
-    background-image: url("../images/ax.png"), url("../images/ground.png");
+    background-image: url("../images/ax.svg");
 }
 
 div[weapon = "club"] {
-    background-image: url("../images/club.png"),url("../images/ground.png");
+    background-image: url("../images/club.svg")
 }
 
 .healBarContainer {
@@ -161,25 +161,17 @@ div[weapon = "club"] {
 
 .moveCase {
     
-    animation: 1000ms ease-in-out alternate infinite bounce;
+    animation: 500ms ease-in-out alternate infinite bounce;
 
 }
-
 
 
 @keyframes bounce {
-    from {
-        border: 1px solid grey;
-        /*background: var(--caseBorderColor);*/
-    
-
-    }
-    to {
-        border: 1px solid black;
-        
-
-    }
+    from {border: 1px solid grey;}
+    to {border: 1px solid black;}
 }
+
+
 
 .hide {
     display: none;

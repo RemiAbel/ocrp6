@@ -52,6 +52,7 @@ class Player {
         if (weaponName == "sword1") { weaponName = "sword"}    
         $("." + this.style + "Weapon").html("Arme : " + weaponName);
         $("." + this.style + "HealBar").css("width", this.health + "%" );
+        $("." + this.style + "WeaponWindow").attr("weapon", this.weapon.weaponType );;
               
     }
 

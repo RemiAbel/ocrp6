@@ -1,0 +1,182 @@
+:root {
+  --player1Color: #AD2E17;
+  --player2Color: #1F5255;
+  --caseSize:60px;
+  --caseBackground: rgba(21, 92, 62, 0.5);
+  --caseBorderColor: #211F1E;
+  --backgroundColor: #211F1E;
+  --caseBackgroundOppacity: 0.3;
+}
+
+* {
+  font-family: "Press Start 2P", cursive;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--backgroundColor);
+}
+
+.container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.hide {
+  display: none;
+}
+
+.square {
+  border: 0.1px solid var(--caseBorderColor);
+  width: var(--caseSize);
+  height: var(--caseSize);
+  background: var(--caseBackground);
+}
+.square .wall {
+  animation: 1000ms ease-in-out alternate infinite wallAnim;
+}
+.square[weapon*=sword] {
+  background-image: url("../images/sword.svg");
+}
+.square[weapon=dagger] {
+  background-image: url("../images/dagger.svg");
+}
+.square[weapon=saber] {
+  background-image: url("../images/saber.svg");
+}
+.square[weapon=ax] {
+  background-image: url("../images/ax.svg");
+}
+.square[weapon=club] {
+  background-image: url("../images/club.svg");
+}
+.square .player1 {
+  animation: 150ms alternate infinite player1anim;
+}
+.square .player2 {
+  animation: 150ms alternate infinite player2anim;
+}
+.square .moveCase {
+  animation: 500ms ease-in-out alternate infinite bounce;
+}
+
+@keyframes wallAnim {
+  0% {
+    background: url("../images/trap1.svg");
+  }
+  70% {
+    background: url("../images/trap1.svg");
+  }
+  80% {
+    background: url("../images/trap2.svg");
+  }
+  90% {
+    background: url("../images/trap3.svg");
+  }
+  100% {
+    background: url("../images/trap4.svg");
+  }
+}
+@keyframes player1anim {
+  from {
+    background: url("../images/knight_idle1.svg"), rgba(21, 92, 62, var(--caseBackgroundOppacity));
+  }
+  to {
+    background: url("../images/knight_idle11.svg"), rgba(21, 92, 62, var(--caseBackgroundOppacity));
+  }
+}
+@keyframes player2anim {
+  from {
+    background: url("../images/knight_idle2.svg"), rgba(21, 92, 62, var(--caseBackgroundOppacity));
+  }
+  to {
+    background: url("../images/knight_idle22.svg"), rgba(21, 92, 62, var(--caseBackgroundOppacity));
+  }
+}
+@keyframes bounce {
+  from {
+    border: 1px solid grey;
+  }
+  to {
+    border: 1px solid black;
+  }
+}
+.healBarContainer {
+  width: 100%;
+  height: 20px;
+  background-color: var(--caseBackground);
+  margin-bottom: 5px;
+  padding: 5px;
+}
+
+.player1HealBar, .player2HealBar {
+  width: 100%;
+  height: 100%;
+  background-color: green;
+}
+
+.bigPlayer {
+  --bigPlayerWidth: 70%;
+  width: var(--bigPlayerWidth);
+  padding-top: var(--bigPlayerWidth);
+}
+
+.bigPlayer1 {
+  animation: 150ms alternate infinite bigPlayer1anim;
+}
+
+.bigPlayer2 {
+  animation: 150ms alternate infinite bigPlayer2anim;
+}
+
+@keyframes bigPlayer1anim {
+  from {
+    background: url("../images/knight_idle1.svg");
+  }
+  to {
+    background: url("../images/knight_idle11.svg");
+  }
+}
+@keyframes bigPlayer2anim {
+  from {
+    background: url("../images/knight_idle2.svg");
+  }
+  to {
+    background: url("../images/knight_idle22.svg");
+  }
+}
+.player1WeaponWindow, .player2WeaponWindow {
+  width: 30%;
+}
+.player1WeaponWindow[weapon*=sword], [weapon*=sword].player2WeaponWindow {
+  background-image: url("../images/sword.svg");
+}
+.player1WeaponWindow[weapon=dagger], [weapon=dagger].player2WeaponWindow {
+  background-image: url("../images/dagger.svg");
+}
+.player1WeaponWindow[weapon=saber], [weapon=saber].player2WeaponWindow {
+  background-image: url("../images/saber.svg");
+}
+.player1WeaponWindow[weapon=ax], [weapon=ax].player2WeaponWindow {
+  background-image: url("../images/ax.svg");
+}
+.player1WeaponWindow[weapon=club], [weapon=club].player2WeaponWindow {
+  background-image: url("../images/club.svg");
+}
+
+.row {
+  display: flex;
+}
+
+header {
+  padding: 10px;
+}
+header p {
+  font-size: 30px;
+  text-transform: uppercase;
+  text-align: center;
+  color: white;
+}
+
+/*# sourceMappingURL=style.css.map */
