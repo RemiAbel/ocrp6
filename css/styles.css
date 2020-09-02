@@ -244,10 +244,6 @@ button {
     background-color: var(--player2Color);
 }
 
-.hide {
-    display: none;
-
-}
 
 .currentPlayer {
     border-color: brown;

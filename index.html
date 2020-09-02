@@ -8,7 +8,7 @@
   <meta name="description" content="Just another silly game">
   <meta name="author" content="Rémi Abel">
 
-  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/style.css">
   <link href="https://fonts.googleapis.com/css2?family=Uncial+Antiqua&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -17,7 +17,7 @@
 
 <body>
 
-  <header class="pixelFont">
+  <header>
     <p>Knight Fight</p>
   </header>
 
@@ -25,13 +25,16 @@
 
  
 
-    <div class="statPlayer statPlayer1 pixelFont">
+    <div class="statPlayer statPlayer1">
 
       <div class="healBarContainer">
         <div class="player1HealBar"></div>
       </div>
-      <div class="bigPlayer bigPlayer1"></div>
-      <div class="player1WeaponWindow"></div>
+      <div class="flex">
+        <div class="bigPlayer bigPlayer1"></div>
+        <div class="player1WeaponWindow"></div>
+      </div>
+      
       <h2 class="player1Name"></h2>      
       <h3 class="player1HP"></h3>
       <h3 class="player1Weapon"></h3>
@@ -44,13 +47,16 @@
     <div id="map">
     </div>
 
-    <div class="statPlayer statPlayer2 pixelFont">
+    <div class="statPlayer statPlayer2">
 
       <div class="healBarContainer">
         <div class="player2HealBar"></div>
       </div>
-      <div class="player2WeaponWindow"></div>
-      <div class="bigPlayer bigPlayer2"></div>
+      <div class="flex">
+        <div class="player2WeaponWindow"></div>
+        <div class="bigPlayer bigPlayer2"></div>        
+      </div>
+      
       <h2 class="player2Name"></h2>
       <h3 class="player2HP"></h3>
       <h3 class="player2Weapon"></h3>
@@ -58,7 +64,7 @@
 
     </div>
 
-    <div class="fightWindow hide pixelFont">
+    <div class="fightWindow hide">
 
       <h2 class="playerTurnName"></h2>
 

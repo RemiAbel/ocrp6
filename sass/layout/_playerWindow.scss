@@ -1,0 +1,17 @@
+.statPlayer {
+    padding:10px;
+    color:white;
+    border:.1px solid var(--caseBorderColor);
+    
+}
+
+.statPlayer1 {
+    background-color: var(--player1Color);    
+}
+.statPlayer2 {
+    background-color: var(--player2Color);
+}
+
+.flex{
+    display: flex;
+}

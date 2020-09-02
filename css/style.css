@@ -6,6 +6,7 @@
   --caseBorderColor: #211F1E;
   --backgroundColor: #211F1E;
   --caseBackgroundOppacity: 0.3;
+  --bigPlayerWidth: 70%;
 }
 
 * {
@@ -23,18 +24,11 @@ body {
   justify-content: center;
 }
 
-.hide {
-  display: none;
-}
-
 .square {
   border: 0.1px solid var(--caseBorderColor);
   width: var(--caseSize);
   height: var(--caseSize);
   background: var(--caseBackground);
-}
-.square .wall {
-  animation: 1000ms ease-in-out alternate infinite wallAnim;
 }
 .square[weapon*=sword] {
   background-image: url("../images/sword.svg");
@@ -51,14 +45,21 @@ body {
 .square[weapon=club] {
   background-image: url("../images/club.svg");
 }
-.square .player1 {
+
+.player1 {
   animation: 150ms alternate infinite player1anim;
 }
-.square .player2 {
+
+.player2 {
   animation: 150ms alternate infinite player2anim;
 }
-.square .moveCase {
+
+.moveCase {
   animation: 500ms ease-in-out alternate infinite bounce;
+}
+
+.wall {
+  animation: 1000ms ease-in-out alternate infinite wallAnim;
 }
 
 @keyframes wallAnim {
@@ -105,7 +106,7 @@ body {
 .healBarContainer {
   width: 100%;
   height: 20px;
-  background-color: var(--caseBackground);
+  background-color: black;
   margin-bottom: 5px;
   padding: 5px;
 }
@@ -117,7 +118,6 @@ body {
 }
 
 .bigPlayer {
-  --bigPlayerWidth: 70%;
   width: var(--bigPlayerWidth);
   padding-top: var(--bigPlayerWidth);
 }
@@ -148,21 +148,56 @@ body {
 }
 .player1WeaponWindow, .player2WeaponWindow {
   width: 30%;
+  padding-top: 10%;
 }
 .player1WeaponWindow[weapon*=sword], [weapon*=sword].player2WeaponWindow {
   background-image: url("../images/sword.svg");
+  background-repeat: no-repeat;
+  animation: 400ms ease-in-out infinite alternate weaponAnim;
 }
 .player1WeaponWindow[weapon=dagger], [weapon=dagger].player2WeaponWindow {
   background-image: url("../images/dagger.svg");
+  background-repeat: no-repeat;
+  animation: 400ms ease-in-out infinite alternate weaponAnim;
 }
 .player1WeaponWindow[weapon=saber], [weapon=saber].player2WeaponWindow {
   background-image: url("../images/saber.svg");
+  background-repeat: no-repeat;
+  animation: 400ms ease-in-out infinite alternate weaponAnim;
 }
 .player1WeaponWindow[weapon=ax], [weapon=ax].player2WeaponWindow {
   background-image: url("../images/ax.svg");
+  background-repeat: no-repeat;
+  animation: 400ms ease-in-out infinite alternate weaponAnim;
 }
 .player1WeaponWindow[weapon=club], [weapon=club].player2WeaponWindow {
   background-image: url("../images/club.svg");
+  background-repeat: no-repeat;
+  animation: 400ms ease-in-out infinite alternate weaponAnim;
+}
+
+@keyframes weaponAnim {
+  from {
+    transform: scale(2, 2) translateY(25%) rotate(-2deg);
+  }
+  to {
+    transform: scale(2, 2) translateY(28%) rotate(2deg);
+  }
+}
+.btnContainer {
+  display: flex;
+  justify-content: center;
+}
+
+button {
+  background-color: white;
+  border-radius: 50px;
+  border: 3px solid darkgray;
+  color: darkgrey;
+  margin: 10px;
+}
+button:hover {
+  background-color: lightgray;
 }
 
 .row {
@@ -177,6 +212,67 @@ header p {
   text-transform: uppercase;
   text-align: center;
   color: white;
+}
+
+.winMessage {
+  position: absolute;
+  text-align: center;
+  border-style: outset;
+  border-width: 3px;
+  width: 400px;
+  height: 250px;
+  background-color: grey;
+  position: fixed;
+  margin-top: 10vh;
+  display: flex;
+  flex-direction: column;
+  z-index: 999;
+}
+
+.statPlayer {
+  padding: 10px;
+  color: white;
+  border: 0.1px solid var(--caseBorderColor);
+}
+
+.statPlayer1 {
+  background-color: var(--player1Color);
+}
+
+.statPlayer2 {
+  background-color: var(--player2Color);
+}
+
+.flex {
+  display: flex;
+}
+
+.fightWindow {
+  position: absolute;
+  text-align: center;
+  border: 3px solid darkgray;
+  border-radius: 10px;
+  background-color: var(--backgroundColor);
+  position: fixed;
+  margin-top: 10vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.infoPlayerFight {
+  display: flex;
+}
+
+.currentPlayer {
+  border-color: brown;
+}
+
+.shield {
+  background-color: lightblue;
+}
+
+.hide {
+  display: none;
 }
 
 /*# sourceMappingURL=style.css.map */
