@@ -19,93 +19,56 @@
 
   <header>
     <p>Knight Fight</p>
+    <h2 class="playerTurnName">Player Turn</h2>
   </header>
 
   <div class="container">
 
- 
-
     <div class="statPlayer statPlayer1">
-
       <div class="healBarContainer">
         <div class="player1HealBar"></div>
       </div>
       <div class="flex">
-        <div class="bigPlayer bigPlayer1"></div>
+        <div class="bigPlayer bigPlayer1" id="windowPlayer1"></div>
         <div class="player1WeaponWindow"></div>
       </div>
-      
       <h2 class="player1Name"></h2>      
       <h3 class="player1HP"></h3>
       <h3 class="player1Weapon"></h3>
       <h3 class="player1Power"></h3>
-
     </div>
-
-
 
     <div id="map">
     </div>
 
     <div class="statPlayer statPlayer2">
-
       <div class="healBarContainer">
         <div class="player2HealBar"></div>
       </div>
       <div class="flex">
-        <div class="player2WeaponWindow"></div>
-        <div class="bigPlayer bigPlayer2"></div>        
+        <div class="player2WeaponWindow" ></div>
+        <div class="bigPlayer bigPlayer2" id="windowPlayer2"></div>        
       </div>
-      
       <h2 class="player2Name"></h2>
       <h3 class="player2HP"></h3>
       <h3 class="player2Weapon"></h3>
       <h3 class="player2Power"></h3>
-
-    </div>
-
-    <div class="fightWindow hide">
-
-      <h2 class="playerTurnName"></h2>
-
-      <div class="infoPlayerFight">
-        <div class="statPlayer" id="windowPlayer1">
-  
-          <h2 class="player1Name"></h2>      
-          <h3 class="player1HP"></h3>
-          <h3 class="player1Weapon"></h3>
-          <h3 class="player1Power"></h3>
-  
-        </div>
-  
-        <div class="statPlayer" id="windowPlayer2">
-  
-          <h2 class="player2Name"></h2>
-          <h3 class="player2HP"></h3>
-          <h3 class="player2Weapon"></h3>
-          <h3 class="player2Power"></h3>
-  
-        </div>
-  
-      </div>
-      
-      <div class="btnContainer">
-        <button class="attackBtn" type="button">Attaquer</button>
-        <button class="defBtn" type="button">Défendre</button>
-
-      </div>
-      
-
     </div>
 
     <div class="winMessage hide">
       You Win
     </div>
 
-
   </div>
 
-    
+  <div class="container">
+
+    <div class="btnContainer hide">
+      <button class="attackBtn" type="button">Attack</button>
+      <button class="defBtn" type="button">Protect</button>
+    </div>
+
+  </div>
 
     
     <script src="js/Config.js"></script>
@@ -113,11 +76,8 @@
     <script src="js/Map.js"></script>
     <script src="js/Weapon.js"></script>
     <script src="js/Player.js"></script>
-
-
     <script src="js/Main.js"></script>
-
-
+    
 
 </body>
 </html>

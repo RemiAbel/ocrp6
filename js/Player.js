@@ -1,7 +1,7 @@
 // class joueurs
 
 class Player {
-    constructor(name, weapon, mapSize=8, style, health = 100, attackPower = 20, posture = "attack") {
+    constructor(name, weapon, mapSize=8, style, health = 100, attackPower = 20, posture = "attack", main) {
         this.name = name;
         this.health = health;
         this.attackPower = attackPower;
@@ -46,11 +46,11 @@ class Player {
     getInfo() {
         $("." + this.style + "Name").html(this.name);
         $("." + this.style + "HP").html("HP : " + this.health);
-        $("." + this.style + "Power").html("Puissance : " + this.attackPower);
+        $("." + this.style + "Power").html("Power : " + this.attackPower);
         let weaponName = this.weapon.weaponType;
 
         if (weaponName == "sword1") { weaponName = "sword"}    
-        $("." + this.style + "Weapon").html("Arme : " + weaponName);
+        $("." + this.style + "Weapon").html("Weapon : " + weaponName);
         $("." + this.style + "HealBar").css("width", this.health + "%" );
         $("." + this.style + "WeaponWindow").attr("weapon", this.weapon.weaponType );;
               
@@ -96,11 +96,11 @@ class Player {
             
             let playerWeapon = this.weapon.weaponType;
 
-            this.weapon = main.weapons[square.attr("weapon")];
+            this.weapon = maincoucou.weapons[square.attr("weapon")];
 
-            this.attackPower = main.weapons[square.attr("weapon")].damage;
+            this.attackPower = maincoucou.weapons[square.attr("weapon")].damage;
 
-            square.removeClass(main.weapons[square.attr("weapon")].weaponType);
+            square.removeClass(maincoucou.weapons[square.attr("weapon")].weaponType);
 
             square.attr("weapon", playerWeapon );
             
@@ -139,6 +139,7 @@ class Player {
     // déplace le joueur quand il clic sur une case en surbrillance
     move() {
         
+        console.log(maincoucou.currentPlayer);
         $(".moveCase").off("click");
 
         $(".moveCase").on("click",(e) => {   
@@ -192,11 +193,11 @@ class Player {
             $(".square").removeClass("moveCase"); 
             
             if (this.isPlayerAround()) {
-                main.fightTurn();
+                maincoucou.fightTurn();
                 return;
             }
             
-            main.playerTurn();
+            maincoucou.playerTurn();
             
             
         });        
@@ -221,7 +222,7 @@ class Player {
         }
 
         
-        main.fightTurn();
+        maincoucou.fightTurn();
     }
     
     

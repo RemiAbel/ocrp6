@@ -5,12 +5,13 @@
 }
 
 button {
-    background-color: white;
+    background-color:transparent;
     border-radius: 50px;
-    border: 3px solid  darkgray;
-    color: darkgrey;
+    border: 3px solid White;
+    color: white;
     margin: 10px;
+    padding: 10px;
     &:hover {
-        background-color: lightgray;
+        background-color: black;
     }
 }

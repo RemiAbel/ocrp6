@@ -5,10 +5,16 @@
 
 body{
     background: var(--backgroundColor);
+    color:white;
 }
 
 .container {
     width: 100%;
     display: flex;
     justify-content: center;
+}
+
+.playerTurnName {
+    font-size:1em;
+    text-align: center;
 }

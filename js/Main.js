@@ -1,3 +1,9 @@
+
+
+
+
+
+
 class Main {
 
     constructor(currentPlayer = 1) {
@@ -5,13 +11,16 @@ class Main {
         this.loadMap();
         this.loadWeapon();
         this.loadPlayer();
+        
+            
+    }
+
+    start() {
         this.player1.turn();
-           
     }
 
     loadMap() {
         this.map = new Map(Config.mapSize);
-
 
     }
 
@@ -35,11 +44,12 @@ class Main {
     }
 
     loadPlayer() {
-        this.player1 = new Player("Norbert",this.sword, Config.mapSize,"player1");
-        this.player2 = new Player("Sakura",this.sword1, Config.mapSize,"player2");
+        this.player1 = new Player("Player 1",this.sword, Config.mapSize,"player1", maincoucou);
+        this.player2 = new Player("Player 2",this.sword1, Config.mapSize,"player2", maincoucou);
 
     }
 
+    /*
     attackPlayer(player, target) {
 
         player.posture = "attack";
@@ -54,49 +64,45 @@ class Main {
         target.getInfo();
         player.getInfo();
     }
-
+    */
     
 
     playerTurn() {
+        
         console.log(this.currentPlayer);
-
-        /*      
-        if (this.player1.isPlayerAround()) {
-            this.fightTurn();
-            return;
-        } 
-          */            
-        if(this.currentPlayer === 1) {
-
+        $(".playerTurnName").html("Player "+this.currentPlayer +" turn");
+        this.displayPlayerTurn();
             
+        if(this.currentPlayer === 1) {
 
             if (this.player1.isPlayerAround()) { return;}  
             this.currentPlayer = 2;
 
             this.player2.turn();
 
-
         } else  {
-
-            
 
             if (this.player1.isPlayerAround()) { return;} 
             this.currentPlayer = 1;
 
             this.player1.turn();
-
-                       
+            
         } 
-        console.log(this.currentPlayer);       
+                
     }
 
 
 
     fightTurn() {
-        console.log(this.currentPlayer);
-        $(".fightWindow").removeClass("hide");
+        if (!$("#map").hasClass("hide")) {
+            $("#map").addClass("hide");
+        }
+        if ($(".btnContainer").hasClass("hide")){
+            $(".btnContainer").removeClass("hide");
+        }
         
-        $(".playerTurnName").html("player"+this.currentPlayer);
+        
+        $(".playerTurnName").html("Player "+this.currentPlayer +" turn");
         this.displayPlayerTurn();
         
 
@@ -137,14 +143,15 @@ class Main {
             this.currentPlayer=1;
         })
 
-       
+        
     }
 
     displayPlayerTurn() {
-        if (this.currentPlayer===1) {
+        if (this.currentPlayer==1) {
             $("#windowPlayer1").addClass("currentPlayer");
             $("#windowPlayer2").removeClass("currentPlayer");
-        }else {
+        }
+        else {
             $("#windowPlayer2").addClass("currentPlayer");
             $("#windowPlayer1").removeClass("currentPlayer");
         }
@@ -171,7 +178,10 @@ class Main {
 
 }
 
-let main = new Main();
+maincoucou = new Main();
+console.log(maincoucou);
+maincoucou.start();
+
 
 
 

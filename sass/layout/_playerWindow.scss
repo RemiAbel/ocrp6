@@ -2,6 +2,9 @@
     padding:10px;
     color:white;
     border:.1px solid var(--caseBorderColor);
+    h3 {
+        font-size: .8em;
+    }
     
 }
 
@@ -14,4 +17,16 @@
 
 .flex{
     display: flex;
+}
+
+.currentPlayer {
+    border: 1px solid white;
+}
+
+.shield {
+    border:5px solide lightblue;
+}
+
+.hide {
+    display: none;
 }

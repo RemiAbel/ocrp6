@@ -16,12 +16,18 @@
 
 body {
   background: var(--backgroundColor);
+  color: white;
 }
 
 .container {
   width: 100%;
   display: flex;
   justify-content: center;
+}
+
+.playerTurnName {
+  font-size: 1em;
+  text-align: center;
 }
 
 .square {
@@ -190,14 +196,15 @@ body {
 }
 
 button {
-  background-color: white;
+  background-color: transparent;
   border-radius: 50px;
-  border: 3px solid darkgray;
-  color: darkgrey;
+  border: 3px solid White;
+  color: white;
   margin: 10px;
+  padding: 10px;
 }
 button:hover {
-  background-color: lightgray;
+  background-color: black;
 }
 
 .row {
@@ -234,6 +241,9 @@ header p {
   color: white;
   border: 0.1px solid var(--caseBorderColor);
 }
+.statPlayer h3 {
+  font-size: 0.8em;
+}
 
 .statPlayer1 {
   background-color: var(--player1Color);
@@ -247,28 +257,12 @@ header p {
   display: flex;
 }
 
-.fightWindow {
-  position: absolute;
-  text-align: center;
-  border: 3px solid darkgray;
-  border-radius: 10px;
-  background-color: var(--backgroundColor);
-  position: fixed;
-  margin-top: 10vh;
-  display: flex;
-  flex-direction: column;
-}
-
-.infoPlayerFight {
-  display: flex;
-}
-
 .currentPlayer {
-  border-color: brown;
+  border: 1px solid white;
 }
 
 .shield {
-  background-color: lightblue;
+  border: 5px solide lightblue;
 }
 
 .hide {
