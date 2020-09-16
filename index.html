@@ -24,12 +24,12 @@
 
   <div class="container">
 
-    <div class="statPlayer statPlayer1">
+    <div class="statPlayer statPlayer1" id="windowPlayer1">
       <div class="healBarContainer">
         <div class="player1HealBar"></div>
       </div>
       <div class="flex">
-        <div class="bigPlayer bigPlayer1" id="windowPlayer1"></div>
+        <div class="bigPlayer bigPlayer1"></div>
         <div class="player1WeaponWindow"></div>
       </div>
       <h2 class="player1Name"></h2>      
@@ -41,13 +41,13 @@
     <div id="map">
     </div>
 
-    <div class="statPlayer statPlayer2">
+    <div class="statPlayer statPlayer2" id="windowPlayer2">
       <div class="healBarContainer">
         <div class="player2HealBar"></div>
       </div>
       <div class="flex">
         <div class="player2WeaponWindow" ></div>
-        <div class="bigPlayer bigPlayer2" id="windowPlayer2"></div>        
+        <div class="bigPlayer bigPlayer2" ></div>        
       </div>
       <h2 class="player2Name"></h2>
       <h3 class="player2HP"></h3>
@@ -56,7 +56,8 @@
     </div>
 
     <div class="winMessage hide">
-      You Win
+      <p id="winMessage"></p>
+      <button class="restart" type="button">Restart</button>
     </div>
 
   </div>

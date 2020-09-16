@@ -224,13 +224,13 @@ header p {
 .winMessage {
   position: absolute;
   text-align: center;
-  border-style: outset;
-  border-width: 3px;
-  width: 400px;
-  height: 250px;
-  background-color: grey;
+  padding: 50px;
+  border: 3px solid white;
+  width: 30%;
+  height: 40%;
+  background-color: var(--backgroundColor);
   position: fixed;
-  margin-top: 10vh;
+  margin-top: 5vh;
   display: flex;
   flex-direction: column;
   z-index: 999;
@@ -239,7 +239,6 @@ header p {
 .statPlayer {
   padding: 10px;
   color: white;
-  border: 0.1px solid var(--caseBorderColor);
 }
 .statPlayer h3 {
   font-size: 0.8em;
@@ -247,10 +246,12 @@ header p {
 
 .statPlayer1 {
   background-color: var(--player1Color);
+  border: 5px solid var(--player1Color);
 }
 
 .statPlayer2 {
   background-color: var(--player2Color);
+  border: 5px solid var(--player2Color);
 }
 
 .flex {
@@ -258,7 +259,7 @@ header p {
 }
 
 .currentPlayer {
-  border: 1px solid white;
+  animation: 1000ms ease-in-out alternate infinite blinking;
 }
 
 .shield {
@@ -267,6 +268,15 @@ header p {
 
 .hide {
   display: none;
+}
+
+@keyframes blinking {
+  from {
+    border: 5px solid var(--backgroundColor);
+  }
+  to {
+    border: 5px solid white;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

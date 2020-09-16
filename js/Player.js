@@ -223,6 +223,7 @@ class Player {
         player.getInfo();
 
         if( player.health <= 0 ) {
+            $("#winMessage").html(this.name + " Win!!");
             $(".winMessage").removeClass("hide");
             return;
         }

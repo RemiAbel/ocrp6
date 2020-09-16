@@ -1,15 +1,16 @@
 .winMessage{
     position: absolute;
     text-align: center;
-    border-style: outset;
-    border-width: 3px;
-    width: 400px;
-    height: 250px;
+    padding: 50px;
+    
+    border: 3px solid white;
+    width: 30%;
+    height: 40%;
     
     
-    background-color: grey;
+    background-color: var(--backgroundColor);
     position: fixed;
-    margin-top: 10vh;
+    margin-top: 5vh;
     display:flex;
     flex-direction: column;
     z-index: 999;

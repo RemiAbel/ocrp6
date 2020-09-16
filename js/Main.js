@@ -119,24 +119,32 @@ class Main {
     defense() {
         this['player'+this.currentPlayer].posture = "defense";
     }
-/*
-    attack(player, target) {
-        if (target.posture === "attack") {
 
-            target.healh -= this.player.attackPower;
+    restart() {
+        $(".restart").on("click",(e) => {
+            $(".WinMessage").addClass("hide");
 
-        } else {
-            target.healh -= floor( this.player.attackPower / 2 );
-        }
+        })
     }
-*/
 
 
 }
 
 let main = new Main();
-console.log(main);
 main.start();
+
+
+$(".restart").on("click",(e) => {
+    $(".winMessage").addClass("hide");
+    $(".btnContainer").addClass("hide");
+    $("#map").removeClass("hide");
+    $("#map").html("");
+    delete main;
+    let main = new Main();
+    main.start();    
+})
+
+
 
 
 

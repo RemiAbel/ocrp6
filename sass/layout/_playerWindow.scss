@@ -1,7 +1,6 @@
 .statPlayer {
     padding:10px;
     color:white;
-    border:.1px solid var(--caseBorderColor);
     h3 {
         font-size: .8em;
     }
@@ -9,10 +8,12 @@
 }
 
 .statPlayer1 {
-    background-color: var(--player1Color);    
+    background-color: var(--player1Color);
+    border:5px solid var(--player1Color);    
 }
 .statPlayer2 {
     background-color: var(--player2Color);
+    border:5px solid var(--player2Color)
 }
 
 .flex{
@@ -20,7 +21,7 @@
 }
 
 .currentPlayer {
-    border: 1px solid white;
+    animation: 1000ms ease-in-out alternate infinite blinking;
 }
 
 .shield {
@@ -29,4 +30,9 @@
 
 .hide {
     display: none;
+}
+
+@keyframes blinking {
+    from {border: 5px solid var(--backgroundColor);}
+    to {border: 5px solid white;}
 }
