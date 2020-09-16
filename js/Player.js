@@ -1,7 +1,7 @@
 // class joueurs
 
 class Player {
-    constructor(name, weapon, mapSize=8, style, health = 100, attackPower = 20, posture = "attack") {
+    constructor(name, weapon, mapSize=8, style, health = 100, attackPower = Config.swordDamage, posture = "attack") {
         this.name = name;
         this.health = health;
         this.attackPower = attackPower;

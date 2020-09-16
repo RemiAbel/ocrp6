@@ -1,7 +1,7 @@
 //class de génération des armes
 
 class Weapon {
-    constructor(weaponType="sword", mapSize = 8,damage=20, generate = true) {
+    constructor(weaponType="sword", mapSize = 8, damage = Config.swordDamage, generate = true) {
         this.mapSize = mapSize;
         this.weaponType = weaponType;
         this.damage = damage;

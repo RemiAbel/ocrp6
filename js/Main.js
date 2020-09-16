@@ -141,8 +141,8 @@ $(".restart").on("click",(e) => {
     $(".btnContainer").addClass("hide");
     $("#map").removeClass("hide");
     $("#map").html("");
-    delete main;
-    let main = new Main();
+    main = null;
+    main = new Main();
     main.start();    
 })
 

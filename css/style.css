@@ -87,18 +87,18 @@ body {
 }
 @keyframes player1anim {
   from {
-    background: url("../images/knight_idle1.svg"), rgba(21, 92, 62, var(--caseBackgroundOppacity));
+    background: url("../images/knight_idle1.svg"), var(--caseBackground);
   }
   to {
-    background: url("../images/knight_idle11.svg"), rgba(21, 92, 62, var(--caseBackgroundOppacity));
+    background: url("../images/knight_idle11.svg"), var(--caseBackground);
   }
 }
 @keyframes player2anim {
   from {
-    background: url("../images/knight_idle2.svg"), rgba(21, 92, 62, var(--caseBackgroundOppacity));
+    background: url("../images/knight_idle2.svg"), var(--caseBackground);
   }
   to {
-    background: url("../images/knight_idle22.svg"), rgba(21, 92, 62, var(--caseBackgroundOppacity));
+    background: url("../images/knight_idle22.svg"), var(--caseBackground);
   }
 }
 @keyframes bounce {
