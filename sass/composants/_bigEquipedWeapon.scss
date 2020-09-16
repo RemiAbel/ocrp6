@@ -1,0 +1,45 @@
+@mixin weaponAnimation {
+    background-repeat: no-repeat;
+    animation: 400ms ease-in-out infinite alternate weaponAnim;
+
+}
+
+.player1WeaponWindow {
+    width: 30%;
+    padding-top:10%;
+    &[weapon *= "sword"] {
+        background-image: url("../images/sword.svg");
+        @include weaponAnimation;
+    }
+    &[weapon = "dagger"] {
+        background-image: url("../images/dagger.svg");
+        @include weaponAnimation;
+    }
+    &[weapon = "saber"] {
+        background-image: url("../images/saber.svg");
+        @include weaponAnimation;
+    }
+    &[weapon = "ax"] {
+        background-image: url("../images/ax.svg");
+        @include weaponAnimation;
+    }
+    &[weapon = "club"] {
+        background-image: url("../images/club.svg");
+        @include weaponAnimation;
+    }
+}
+
+.player2WeaponWindow {
+    @extend .player1WeaponWindow;
+}
+
+@keyframes weaponAnim {
+    from {transform: scale(2, 2) translateY(25%) rotate(-2deg);}
+    to {transform: scale(2, 2) translateY(28%) rotate(2deg);}
+}
+
+@mixin weaponAnimation {
+    background-repeat: no-repeat;
+    animation: 400ms ease-in-out infinite alternate weaponAnim;
+
+}

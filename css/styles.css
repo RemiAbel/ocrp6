@@ -1,64 +1,265 @@
+
+
+/*
+Palette :
+#211F1E noir like
+#AD2E17 redlike
+#155C3E green like
+#1F5255 dark blue like
+#B19E53 sand like
+*/
+
+:root {
+    --player1Color: #AD2E17;
+    --player2Color: #1F5255;
+    --caseSize:60px;
+    --caseBackground : #211F1E;
+    --caseBorderColor : #211F1E;
+    --caseBackgroundOppacity : 0.3;
+
+}
+
+header {
+    font-size: 30px;
+    Padding: 10px;
+    text-transform: uppercase;
+    text-align: center;
+    color:white;
+}
+
+
+.pixelFont {
+    font-family: 'Press Start 2P', cursive;
+}
+
 body {
-    position: relative;
-
+    background: var(--caseBackground);
 }
 
-
-#map {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, 0%);    
+.container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    
 }
+
 
 .row {
     display: flex;
 }
 
 .square {
-    border: 5px outset grey;
-    width:50px ;
-    height: 50px;
-    background-image: url("../images/ground.jpg");
+    box-sizing: border-box;
+    border-radius: 0px;
+    border:.1px solid var(--caseBorderColor);
+    width:var(--caseSize);
+    height: var(--caseSize);
+    background: rgba(21, 92, 62, 0.5);
 }
 
-.wall {
-    background-image: url("../images/wall.jpg");
-    background-color: darkgray;
+.square .wall {
+    animation: 1000ms ease-in-out alternate infinite wallAnim;
+    
 }
 
-.weapon {
-    border-color: red;
+@keyframes wallAnim {
+    
+    0%  { background: url("../images/trap1.svg"); }
+    70%  { background: url("../images/trap1.svg"); }
+    80% { background: url("../images/trap2.svg"); }
+    90% { background: url("../images/trap3.svg"); }
+    100% { background: url("../images/trap4.svg"); }
 }
 
-.sword {
-    background-image: url("../images/sword.png");
+div[weapon = "sword"] {
+    background-image: url("../images/sword.svg");
 }
 
-.dagger {
-    background-image: url("../images/dagger.png");
+div[weapon = "sword1"] {
+    background-image: url("../images/sword.svg");
 }
 
-.saber {
-    background-image: url("../images/saber.png");
+div[weapon = "dagger"] {
+    background-image: url("../images/dagger.svg");
 }
 
-.ax {
-    background-image: url("../images/ax.png");
+div[weapon = "saber"] {
+    background-image: url("../images/saber.svg");
 }
 
-.club {
-    background-image: url("../images/club.png");
+div[weapon = "ax"] {
+    background-image: url("../images/ax.svg");
 }
 
-.player {
-    background-image: url("../images/swordPlayer.png"); 
+div[weapon = "club"] {
+    background-image: url("../images/club.svg")
+}
+
+.healBarContainer {
+    width: 100%;
+    height: 20px;
+    background-color: var(--caseBackground);
+    margin-bottom: 5px;
+    padding: 5px;
+
+    box-sizing: border-box;
+}
+
+.player1HealBar {
+    width:100%;
+    height: 100%;
+    background-color: green;
+}
+
+.player2HealBar {
+    width:100%;
+    height: 100%;
+    background-color: green;
 }
 
 .player1 {
-    border-color: darkred;
+    animation: 150ms alternate infinite player1anim;
+}
+
+@keyframes player1anim {
+    from {
+        background: url("../images/knight_idle1.svg"), rgba(21, 92, 62, var(--caseBackgroundOppacity));
+
+    }
+    to {
+        background: url("../images/knight_idle11.svg"), rgba(21, 92, 62, var(--caseBackgroundOppacity));
+    }
 }
 
 .player2 {
-    border-color: darkblue;
+    animation: 150ms alternate infinite  player2anim;
+}
+
+@keyframes player2anim {
+    from {
+        background: url("../images/knight_idle2.svg"), rgba(21, 92, 62, var(--caseBackgroundOppacity));
+    }
+    to {
+        background: url("../images/knight_idle22.svg"), rgba(21, 92, 62, var(--caseBackgroundOppacity));
+    }
+}
+
+.bigPlayer {
+    --bigPlayerWidth: 70%;
+    width: var(--bigPlayerWidth);
+    padding-top: var(--bigPlayerWidth);
+}
+
+.bigPlayer1 {
+    animation: 150ms alternate infinite player1anim;
+}
+
+.bigPlayer2 {
+    animation: 150ms alternate infinite player2anim;
+}
+
+
+.moveCase {
+    
+    animation: 500ms ease-in-out alternate infinite bounce;
+
+}
+
+
+@keyframes bounce {
+    from {border: 1px solid grey;}
+    to {border: 1px solid black;}
+}
+
+
+
+.hide {
+    display: none;
+
+}
+
+.fightWindow {
+
+    position: absolute;
+    text-align: center;
+    border: 3px solid darkgray;
+    border-radius: 10px;
+    
+    
+    background-color:white;
+    position: fixed;
+    margin-top: 10vh;
+    display:flex;
+    flex-direction: column;
+    
+
+}
+
+.winMessage{
+    position: absolute;
+    text-align: center;
+    border-style: outset;
+    border-width: 3px;
+    width: 400px;
+    height: 250px;
+    
+    
+    background-color: grey;
+    position: fixed;
+    margin-top: 10vh;
+    display:flex;
+    flex-direction: column;
+    z-index: 999;
+    
+}
+
+.btnContainer {
+    display: flex;
+    justify-content: center;
+    
+}
+
+button {
+    margin: 10px;
+}
+
+.infoPlayerFight {
+    display: flex;
+}
+
+.statPlayer {
+    padding:10px;
+    color:white;
+    
+}
+
+.statPlayer1 {
+    border:.1px solid var(--caseBorderColor);
+    background-color: var(--player1Color) ;
+
+}
+
+.statPlayer2 {
+    border:.1px solid var(--caseBorderColor);
+    background-color: var(--player2Color);
+}
+
+
+.currentPlayer {
+    border-color: brown;
+}
+
+.shield {
+    background-color: lightblue;
+}
+
+button {
+    background-color: white;
+    border-radius: 50px;
+    border: 3px solid  darkgray;
+    color: darkgrey;
+}
+
+button:hover {
+    background-color: lightgray;
 }
