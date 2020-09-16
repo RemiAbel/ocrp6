@@ -78,12 +78,10 @@ class Main {
             this.currentPlayer=1;
 
             this.player2.attack(this.player1);
-        })
-
-        
+        })        
 
         $(".defBtn").off("click");
-        
+
         $(".defBtn").on("click",  () => {
 
             this['player'+this.currentPlayer].posture = "defense";
@@ -92,15 +90,12 @@ class Main {
             if (this.currentPlayer === 1) {
                 this.currentPlayer=2;
                 this.fightTurn();
-                
                 return;
             }
             this.currentPlayer=1;
             this.fightTurn();
             
-        })
-
-        
+        })        
     }
 
     displayPlayerTurn() {
@@ -113,9 +108,6 @@ class Main {
             $("#windowPlayer2").addClass("currentPlayer");
             $("#windowPlayer1").removeClass("currentPlayer");
         }
-
-        
-
     }
 
     defense() {
@@ -128,27 +120,18 @@ class Main {
 
         })
     }
-
-
 }
 
 let main = new Main();
 main.start();
 
-
 $(".restart").on("click",(e) => {
     $(".winMessage").addClass("hide");
     $(".btnContainer").addClass("hide");
+    $(".bigPlayer").removeClass("shield");
     $("#map").removeClass("hide");
     $("#map").html("");
     main = null;
     main = new Main();
     main.start();    
 })
-
-
-
-
-
-
-

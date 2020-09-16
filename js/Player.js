@@ -56,14 +56,6 @@ class Player {
               
     }
 
-    playerPositionX() {
-        return $("." + this.style).attr("x");        
-    }
-
-    playerPositionY() {
-        return $("." + this.style).attr("y");        
-    }
-
     // ajoute la class moveCase au 3 prochaines cases des directions x+, x-, y+, y-.
     showDirection(start, end,increment, directionX) {
         
@@ -80,8 +72,8 @@ class Player {
                     
                 } else { break; }            
         }
-
     }
+
     // Montre les cases jouables par le joueur.
     showMove() {        
         
@@ -134,27 +126,20 @@ class Player {
         ]
 
         return playerAround.includes(true);
- 
-
     }
 
-
     // déplace le joueur quand il clic sur une case en surbrillance
-    move() {
-        
+    move() {        
         console.log(main.currentPlayer);
         $(".moveCase").off("click");
 
-        $(".moveCase").on("click",(e) => {   
-                  
+        $(".moveCase").on("click",(e) => {                  
             //position de la case cliqué
             let positionX = $(e.target).attr("x");
-            let positionY = $(e.target).attr("y");         
-
+            let positionY = $(e.target).attr("y");
             //position avant mouvement du joueur
             let playerPositionX = $("." + this.style).attr("x");
             let playerPositionY = $("." + this.style).attr("y");
-
             // echange l'arme sur le plateau de jeu avec celle tenue par le joueur et modifie this.attackPower. 
             if ((positionX-playerPositionX) !== 0 ) {
 
@@ -165,8 +150,7 @@ class Player {
 
                     let movePlayer = $( '.square[x='   +   (Number($("." + this.style).attr("x"))+i)   +   '][y='   +   $("." + this.style).attr("y")   +   ']');
                     
-                    if (i!==0) { this.switchWeapons(movePlayer);}
-                    
+                    if (i!==0) { this.switchWeapons(movePlayer);}                    
                 }
 
             } else if ((positionY-playerPositionY) !== 0 ) {
@@ -185,16 +169,15 @@ class Player {
             $("." + this.style ).removeClass("player " + this.style);
 
             $("." + this.style ).removeAttr("playerWeapon");
-            
-        
+
             $(e.target).addClass("player " + this.style);
 
             $("." + this.style ).attr("playerWeapon", this.weapon.weaponType);
 
             $(".moveCase").off("click");
-        
-            $(".square").removeClass("moveCase"); 
-            
+
+            $(".square").removeClass("moveCase");
+
             if (this.isPlayerAround()) {
                 main.fightTurn();
                 return;
@@ -203,9 +186,7 @@ class Player {
             if ( main.currentPlayer === 1 ) { main.currentPlayer = 2 } else { main.currentPlayer = 1 }
             console.log(main.currentPlayer);
 
-            main.playerTurn();
-            
-            
+            main.playerTurn();            
         });        
     }
     
@@ -217,7 +198,9 @@ class Player {
             player.health -= this.attackPower;
 
         } else {
+
             player.health -= Math.floor( this.attackPower / 2 );
+
         }
         
         player.getInfo();
@@ -228,31 +211,14 @@ class Player {
             return;
         }
 
-        
         main.fightTurn();
     }
-    
-    
-
 
     turn() {
 
         this.showMove();
         setTimeout(()=>{
             this.move();
-        },100)
-        
-                
-        
+        },100)       
     }
-
-
-    
-
-
-  
-
-
-
-
 }

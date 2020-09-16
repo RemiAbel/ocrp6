@@ -30,6 +30,10 @@ body {
   text-align: center;
 }
 
+.row {
+  display: flex;
+}
+
 .square {
   border: 0.1px solid var(--caseBorderColor);
   width: var(--caseSize);
@@ -220,10 +224,6 @@ button {
 }
 button:hover {
   background-color: black;
-}
-
-.row {
-  display: flex;
 }
 
 header {

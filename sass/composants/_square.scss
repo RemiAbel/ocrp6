@@ -1,9 +1,12 @@
+.row {
+    display: flex;
+}
+
 .square {
     border:.1px solid var(--caseBorderColor);
     width: var(--caseSize);
     height: var(--caseSize);
     background: var(--caseBackground );
-    
     &[weapon *= "sword"] {
         background-image: url("../images/sword.svg");
     }
@@ -24,6 +27,7 @@
 .player1 {
     animation: 150ms alternate infinite player1anim;
 }
+
 .player2 {
     animation: 150ms alternate infinite player2anim;
 }
@@ -36,9 +40,7 @@
     animation: 1000ms ease-in-out alternate infinite wallAnim;
 }
 
-
-@keyframes wallAnim {
-    
+@keyframes wallAnim {    
     0%  { background: url("../images/trap1.svg"); }
     70%  { background: url("../images/trap1.svg"); }
     80% { background: url("../images/trap2.svg"); }
@@ -54,10 +56,10 @@
 
 @keyframes player2anim {
     from    {background: url("../images/knight_idle2.svg"), var(--caseBackground );}
-    to {background: url("../images/knight_idle22.svg"), var(--caseBackground );}
+    to      {background: url("../images/knight_idle22.svg"), var(--caseBackground );}
 }
 
 @keyframes bounce {
-    from {border: 1px solid grey;}
-    to {border: 1px solid black;}
+    from    {border: 1px solid grey;}
+    to      {border: 1px solid black;}
 }
