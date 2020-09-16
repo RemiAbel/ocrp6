@@ -1,18 +1,10 @@
-
-
-
-
-
-
 class Main {
-
     constructor(currentPlayer = 1) {
         this.currentPlayer = currentPlayer;
         this.loadMap();
         this.loadWeapon();
         this.loadPlayer();
-        
-            
+        this.displayPlayerTurn();            
     }
 
     start() {
@@ -21,7 +13,6 @@ class Main {
 
     loadMap() {
         this.map = new Map(Config.mapSize);
-
     }
 
     loadWeapon() {
@@ -39,58 +30,25 @@ class Main {
             sword : this.sword,
             sword1 : this.sword1,
         }
-
-
     }
 
     loadPlayer() {
         this.player1 = new Player("Player 1",this.sword, Config.mapSize,"player1");
         this.player2 = new Player("Player 2",this.sword1, Config.mapSize,"player2");
+    }  
 
-    }
-
-    /*
-    attackPlayer(player, target) {
-
-        player.posture = "attack";
-        if (target.posture === "attack") {
-
-            target.health -= this.attackPower;
-
-        } else {
-            target.health -= floor( this.attackPower / 2 );
-        }
-
-        target.getInfo();
-        player.getInfo();
-    }
-    */
-    
-
-    playerTurn() {
-        
-        
+    playerTurn() {        
         $(".playerTurnName").html("Player "+this.currentPlayer +" turn");
         this.displayPlayerTurn();
             
         if(this.currentPlayer === 2) {
-
-            if (this.player1.isPlayerAround()) { return;}  
-
+            if (this.player1.isPlayerAround()) { return;}
             this.player2.turn();
-
         } else  {
-
-            if (this.player1.isPlayerAround()) { return;} 
-
-
-            this.player1.turn();
-            
-        } 
-                
+            if (this.player1.isPlayerAround()) { return;}
+            this.player1.turn();            
+        }                
     }
-
-
 
     fightTurn() {
         if (!$("#map").hasClass("hide")) {
@@ -98,12 +56,10 @@ class Main {
         }
         if ($(".btnContainer").hasClass("hide")){
             $(".btnContainer").removeClass("hide");
-        }
-        
+        }        
         
         $(".playerTurnName").html("Player "+this.currentPlayer +" turn");
-        this.displayPlayerTurn();
-        
+        this.displayPlayerTurn();        
 
         $(".attackBtn").off("click");
 
@@ -146,6 +102,7 @@ class Main {
     }
 
     displayPlayerTurn() {
+        $(".playerTurnName").html("Player "+this.currentPlayer +" turn");
         if (this.currentPlayer==1) {
             $("#windowPlayer1").addClass("currentPlayer");
             $("#windowPlayer2").removeClass("currentPlayer");
