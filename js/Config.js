@@ -8,6 +8,3 @@ const Config = {
     daggerDamage:15,
     saberDamage:25,
 }
-
-let maincoucou;
-let test = 1;

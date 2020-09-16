@@ -44,8 +44,8 @@ class Main {
     }
 
     loadPlayer() {
-        this.player1 = new Player("Player 1",this.sword, Config.mapSize,"player1", maincoucou);
-        this.player2 = new Player("Player 2",this.sword1, Config.mapSize,"player2", maincoucou);
+        this.player1 = new Player("Player 1",this.sword, Config.mapSize,"player1");
+        this.player2 = new Player("Player 2",this.sword1, Config.mapSize,"player2");
 
     }
 
@@ -69,21 +69,20 @@ class Main {
 
     playerTurn() {
         
-        console.log(this.currentPlayer);
+        
         $(".playerTurnName").html("Player "+this.currentPlayer +" turn");
         this.displayPlayerTurn();
             
-        if(this.currentPlayer === 1) {
+        if(this.currentPlayer === 2) {
 
             if (this.player1.isPlayerAround()) { return;}  
-            this.currentPlayer = 2;
 
             this.player2.turn();
 
         } else  {
 
             if (this.player1.isPlayerAround()) { return;} 
-            this.currentPlayer = 1;
+
 
             this.player1.turn();
             
@@ -178,9 +177,9 @@ class Main {
 
 }
 
-maincoucou = new Main();
-console.log(maincoucou);
-maincoucou.start();
+let main = new Main();
+console.log(main);
+main.start();
 
 
 

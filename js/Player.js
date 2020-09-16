@@ -1,7 +1,7 @@
 // class joueurs
 
 class Player {
-    constructor(name, weapon, mapSize=8, style, health = 100, attackPower = 20, posture = "attack", main) {
+    constructor(name, weapon, mapSize=8, style, health = 100, attackPower = 20, posture = "attack") {
         this.name = name;
         this.health = health;
         this.attackPower = attackPower;
@@ -74,7 +74,10 @@ class Player {
 
                 let moveCase = $( '.square[x='   +   (Number($("." + this.style).attr("x"))+(i*dirX))   +   '][y='   +   (Number($("." + this.style).attr("y"))+(i*dirY))   +   ']');
                 if ( !moveCase.hasClass("wall") && !moveCase.hasClass("player") ) {
-                    moveCase.addClass("moveCase");
+                    setTimeout(()=>{
+                        moveCase.addClass("moveCase");                        
+                    },50) 
+                    
                 } else { break; }            
         }
 
@@ -96,11 +99,11 @@ class Player {
             
             let playerWeapon = this.weapon.weaponType;
 
-            this.weapon = maincoucou.weapons[square.attr("weapon")];
+            this.weapon = main.weapons[square.attr("weapon")];
 
-            this.attackPower = maincoucou.weapons[square.attr("weapon")].damage;
+            this.attackPower = main.weapons[square.attr("weapon")].damage;
 
-            square.removeClass(maincoucou.weapons[square.attr("weapon")].weaponType);
+            square.removeClass(main.weapons[square.attr("weapon")].weaponType);
 
             square.attr("weapon", playerWeapon );
             
@@ -139,7 +142,7 @@ class Player {
     // déplace le joueur quand il clic sur une case en surbrillance
     move() {
         
-        console.log(maincoucou.currentPlayer);
+        console.log(main.currentPlayer);
         $(".moveCase").off("click");
 
         $(".moveCase").on("click",(e) => {   
@@ -193,11 +196,14 @@ class Player {
             $(".square").removeClass("moveCase"); 
             
             if (this.isPlayerAround()) {
-                maincoucou.fightTurn();
+                main.fightTurn();
                 return;
             }
             
-            maincoucou.playerTurn();
+            if ( main.currentPlayer === 1 ) { main.currentPlayer = 2 } else { main.currentPlayer = 1 }
+            console.log(main.currentPlayer);
+
+            main.playerTurn();
             
             
         });        
@@ -222,7 +228,7 @@ class Player {
         }
 
         
-        maincoucou.fightTurn();
+        main.fightTurn();
     }
     
     
@@ -231,7 +237,10 @@ class Player {
     turn() {
 
         this.showMove();
-        this.move();
+        setTimeout(()=>{
+            this.move();
+        },100)
+        
                 
         
     }
