@@ -131,9 +131,15 @@ body {
 .bigPlayer1 {
   animation: 150ms alternate infinite bigPlayer1anim;
 }
+.bigPlayer1.shield {
+  animation: 400ms alternate infinite shieldAnim;
+}
 
 .bigPlayer2 {
   animation: 150ms alternate infinite bigPlayer2anim;
+}
+.bigPlayer2.shield {
+  animation: 400ms alternate infinite shieldAnim;
 }
 
 @keyframes bigPlayer1anim {
@@ -150,6 +156,15 @@ body {
   }
   to {
     background: url("../images/knight_idle22.svg");
+  }
+}
+@keyframes shieldAnim {
+  from {
+    background: url("../images/shield.svg");
+  }
+  to {
+    background: url("../images/shield.svg");
+    transform: translate(0, 10px) rotate(-2deg);
   }
 }
 .player1WeaponWindow, .player2WeaponWindow {
@@ -260,10 +275,6 @@ header p {
 
 .currentPlayer {
   animation: 1000ms ease-in-out alternate infinite blinking;
-}
-
-.shield {
-  border: 5px solide lightblue;
 }
 
 .hide {

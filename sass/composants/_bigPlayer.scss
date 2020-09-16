@@ -5,11 +5,18 @@
 
 .bigPlayer1 {
     animation: 150ms alternate infinite bigPlayer1anim;
+    &.shield {
+        animation: 400ms alternate infinite shieldAnim;
+    }
 }
 
 .bigPlayer2 {
     animation: 150ms alternate infinite bigPlayer2anim;
+    &.shield {
+        animation: 400ms alternate infinite shieldAnim;
+    }
 }
+
 
 @keyframes bigPlayer1anim {
     from    {background: url("../images/knight_idle1.svg")}
@@ -19,5 +26,15 @@
 
 @keyframes bigPlayer2anim {
     from    {background: url("../images/knight_idle2.svg")}
-    to {background: url("../images/knight_idle22.svg")}
+    to      {background: url("../images/knight_idle22.svg")}
+}
+
+@keyframes shieldAnim {
+    from {
+        background: url("../images/shield.svg");
+    }
+    to {
+        background: url("../images/shield.svg");
+        transform: translate(0, 10px) rotate(-2deg);
+    }
 }

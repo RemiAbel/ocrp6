@@ -65,7 +65,7 @@ class Main {
 
         $(".attackBtn").on("click",  () => {
 
-            $("#windowPlayer"+this.currentPlayer).removeClass("shield");
+            $(".bigPlayer"+this.currentPlayer).removeClass("shield");
 
             if (this.currentPlayer === 1) {
                 
@@ -87,15 +87,17 @@ class Main {
         $(".defBtn").on("click",  () => {
 
             this['player'+this.currentPlayer].posture = "defense";
-            $("#windowPlayer"+this.currentPlayer).addClass("shield");
+            $(".bigPlayer"+this.currentPlayer).addClass("shield");
 
             if (this.currentPlayer === 1) {
-                this.fightTurn();
                 this.currentPlayer=2;
+                this.fightTurn();
+                
                 return;
             }
-            this.fightTurn();
             this.currentPlayer=1;
+            this.fightTurn();
+            
         })
 
         
