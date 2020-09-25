@@ -114,12 +114,6 @@ class Main {
         this['player'+this.currentPlayer].posture = "defense";
     }
 
-    restart() {
-        $(".restart").on("click",(e) => {
-            $(".WinMessage").addClass("hide");
-
-        })
-    }
 }
 
 let main = new Main();

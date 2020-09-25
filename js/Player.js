@@ -1,5 +1,4 @@
 // class joueurs
-
 class Player {
     constructor(name, weapon, mapSize=8, style, health = 100, attackPower = Config.swordDamage, posture = "attack") {
         this.name = name;
@@ -12,27 +11,20 @@ class Player {
         this.creatPlayer();
         this.getInfo();
     }
-
+    //  création joueur
     creatPlayer () {
         let playerOk = false;
-
         while (!playerOk) {
-            
             if (this.style == "player1") {
-
                 let random = Utils.randomSquare(Math.floor(this.mapSize/3));
-
                 if (!random.hasClass("weapon") && !random.hasClass("wall") && !random.hasClass("player")) {
                     random.addClass("player");
                     random.addClass(this.style);
                     random.attr("playerWeapon", "sword");
                     playerOk = true;
                 }
-
             } else {
-
                 let random = Utils.randomSquare(Math.floor(this.mapSize), Math.floor(this.mapSize*2/3));
-
                 if (!random.hasClass("weapon") && !random.hasClass("wall") && !random.hasClass("player")) {
                     random.addClass("player");
                     random.addClass(this.style);
